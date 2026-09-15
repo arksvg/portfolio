@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #09090b;
+    --bg-surface: #121215;
+    --bg-surface-elevated: #18181b;
+    --bg-card: rgba(18, 18, 22, 0.75);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(99, 102, 241, 0.4);
+    --text-main: #f4f4f5;
+    --text-muted: #a1a1aa;
+    --text-soft: #71717a;
+    --primary: #6366f1;
+  }
+
+  .light {
+    --bg-main: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-surface-elevated: #ffffff;
+    --bg-card: rgba(255, 255, 255, 0.95);
+    --border-subtle: #e2e8f0;
+    --border-hover: #6366f1;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --text-soft: #64748b;
+    --primary: #4f46e5;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, .font-heading {
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Glass & Card Styling */
+.glass {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+}
+
+.glow-border {
+  border: 1px solid var(--border-subtle);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glow-border:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25), 0 0 15px -3px rgba(99, 102, 241, 0.15);
+}
+
+.light .glow-border {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+}
+
+.light .glow-border:hover {
+  border-color: #6366f1;
+  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.12), 0 4px 10px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Background Grids & Ambient Glow */
+.bg-ambient {
+  background: radial-gradient(circle at 10% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+              radial-gradient(circle at 90% 75%, rgba(168, 85, 247, 0.06) 0%, transparent 40%),
+              radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.04) 0%, transparent 50%);
+}
+
+.light .bg-ambient {
+  background: radial-gradient(circle at 10% 15%, rgba(99, 102, 241, 0.04) 0%, transparent 40%),
+              radial-gradient(circle at 90% 75%, rgba(168, 85, 247, 0.03) 0%, transparent 40%);
+}
+
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.light .bg-dot-pattern {
+  background-image: radial-gradient(rgba(148, 163, 184, 0.25) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Animations */
+@keyframes cloudDrift {
+  0% { transform: translate(-20px, 0px) rotate(120deg); }
+  50% { transform: translate(15px, 10px) rotate(122deg); }
+  100% { transform: translate(-20px, 0px) rotate(120deg); }
+}
+
+.animate-cloud-drift {
+  animation: cloudDrift 16s ease-in-out infinite;
+}
+
+@keyframes planeFloat {
+  0% { transform: translate(0px, 0px) rotate(155deg); }
+  50% { transform: translate(10px, -6px) rotate(158deg); }
+  100% { transform: translate(0px, 0px) rotate(155deg); }
+}
+
+.animate-plane-float {
+  animation: planeFloat 5s ease-in-out infinite;
+}
+
+@keyframes radarRing {
+  0% { transform: scale(0.6); opacity: 0.8; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+.animate-radar-ring {
+  animation: radarRing 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.2);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.4);
+}
