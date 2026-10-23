@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Search, Sparkles, FolderGit2, Globe, SearchX, X } from 'lucide-react';
 import { clientProjects, coreProjects } from '../data/resume';
+import { useProjectVisibility } from '../context/ProjectVisibilityContext';
 import ProjectCard from '../components/ui/ProjectCard';
 import ProjectModal from '../components/ProjectModal';
 
@@ -8,12 +9,18 @@ export default function Projects() {
   const [activeTab, setActiveTab] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedProject, setSelectedProject] = useState(null);
+  const { showClientProjects, isFreelanceProject } = useProjectVisibility();
 
-  const allProjects = [...clientProjects, ...coreProjects];
+  // If showClientProjects is false, hide the 8 freelance client projects
+  const activeClientProjects = showClientProjects
+    ? clientProjects
+    : clientProjects.filter((p) => !isFreelanceProject(p));
+
+  const allProjects = [...activeClientProjects, ...coreProjects];
 
   const filteredProjects = allProjects.filter((p) => {
     // Tab filter
-    if (activeTab === 'client' && !clientProjects.some(cp => cp.id === p.id || cp.name === p.name)) return false;
+    if (activeTab === 'client' && !activeClientProjects.some(cp => cp.id === p.id || cp.name === p.name)) return false;
     if (activeTab === 'core' && !coreProjects.some(cp => cp.id === p.id || cp.title === p.title)) return false;
 
     // Search filter
@@ -68,7 +75,7 @@ export default function Projects() {
                 : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/5'
             }`}
           >
-            Client-Side & Production ({clientProjects.length})
+            Client-Side & Production ({activeClientProjects.length})
           </button>
 
           <button

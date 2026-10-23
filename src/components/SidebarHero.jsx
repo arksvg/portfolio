@@ -47,7 +47,7 @@ export default function SidebarHero({ profile, onToast }) {
                 <img
                   src={profile.avatar}
                   alt={profile.name}
-                  className="w-full h-full object-cover rounded-[22px] bg-zinc-900"
+                  className="w-full h-full object-cover object-top rounded-[22px] bg-zinc-900"
                 />
               </div>
             </div>

@@ -10,8 +10,9 @@ export default function Navbar() {
   const navLinks = [
     { to: '/', label: 'Overview' },
     { to: '/projects', label: 'Projects' },
-    { to: '/design', label: 'UI/UX Design' },
     { to: '/experience', label: 'Experience' },
+    { to: '/achievements', label: 'Achievements' },
+    { to: '/design', label: 'UI/UX Design' },
     { to: '/contact', label: 'Contact' }
   ];
 
@@ -21,7 +22,7 @@ export default function Navbar() {
         {/* Brand Link */}
         <Link to="/" className="flex items-center gap-3 group">
           <div className="w-9 h-9 rounded-xl overflow-hidden border border-zinc-700/80 bg-zinc-800 group-hover:border-indigo-500 transition-colors">
-            <img src={profile.avatar} alt={profile.name} className="w-full h-full object-cover" />
+            <img src="/assets/unnamed.jpg" alt={profile.name} className="w-full h-full object-cover" />
           </div>
           <div>
             <div className="font-heading font-bold text-sm tracking-tight text-white group-hover:text-indigo-400 transition-colors">

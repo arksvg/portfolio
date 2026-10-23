@@ -3,18 +3,18 @@ export const profile = {
   role: "Fullstack Developer (React + Java with Spring Boot)",
   company: "Nexturn Private Limited",
   title: "Associate Full Stack Developer L3",
-  location: "Hyderabad, India",
+  location: "Tamil Nadu, India",
   headline: "Fullstack Developer (React + Java with Spring Boot) | Associate Full Stack Developer L3 @ NexTurn",
   experienceYears: "3+ Years",
   summary: "Fullstack Developer with 3+ years of overall experience building scalable and high-performance web applications using React, Java and Springboot. Skilled in designing intuitive user interfaces, optimizing rendering performance, creating and integrating REST APIs for dynamic data-driven applications. Proficient in modern workflows with GitHub Actions and Agile methodologies, with a strong focus on usability, performance, and seamless user experience.",
   bio: "Fullstack Developer with 3+ years of experience specializing in React, Java, and Spring Boot. Building scalable web architectures, AI gesture-tracking healthcare platforms, and high-performance microservices.",
-  avatar: "/assets/unnamed.jpg",
+  avatar: "/assets/profile_photo.jpg",
   contact: {
     email: "arksvg@gmail.com",
     phone: "+91-9445177941",
-    location: "Hyderabad, India",
+    location: "Tamil Nadu, India",
     nativeLocation: "Sivaganga, Tamil Nadu, India",
-    coordinates: { lat: 17.385044, lng: 78.486671 }, // Hyderabad, India
+    coordinates: { lat: 9.83996, lng: 78.48323 }, // Tamil Nadu, India
     timezone: "Asia/Kolkata",
     utcOffset: "+05:30"
   },
@@ -55,7 +55,7 @@ export const professionalExperience = [
     id: "nexturn_l3",
     role: "Associate Full Stack Developer L3",
     company: "Nexturn Private Limited",
-    location: "Hyderabad, India",
+    location: "Tamil Nadu, India",
     period: "Jan 2024 – Present",
     type: "Full-Time",
     highlights: [
@@ -70,7 +70,7 @@ export const professionalExperience = [
     id: "nexturn_intern",
     role: "Software Engineer Intern",
     company: "Nexturn Private Limited",
-    location: "Hyderabad, India",
+    location: "Tamil Nadu, India",
     period: "Sep 2022 – Dec 2023",
     type: "Internship",
     highlights: [
@@ -82,6 +82,16 @@ export const professionalExperience = [
 ];
 
 export const educationData = [
+  {
+    id: "edu_mba",
+    degree: "Master of Business Administration (MBA) – Project Management",
+    institution: "Alagappa University",
+    period: "2026 – 2027",
+    type: "Postgraduate Degree",
+    status: "First Class with Distinction",
+    details: "Pursuing an MBA in Project Management (2026–2027) with First Class with Distinction.",
+    link: "https://www.linkedin.com/in/arksvg/"
+  },
   {
     id: "edu_btech",
     degree: "Bachelor of Technology – IT",
@@ -118,23 +128,93 @@ export const certificationsData = [
 
 export const achievementsData = [
   {
-    title: "1st Place – UYIR State Level Hackathon",
-    year: "2025",
-    organization: "UYIR Hackathon",
-    description: "Secured 1st Prize across the state for Namma Padhai road navigation and traffic solution.",
-    badge: "1st Place Winner",
-    image: "/assets/users_cluee7fz4036qqd0171ygrjx3_fPsXOdOSxLnW8fo9-Screenshot 2025-04-20 010628.png",
-    link: "https://www.youtube.com/watch?v=Usdmuwjqqxg&ab_channel=TheNexTurnShows"
+    id: "youth_action_hackathon",
+    title: "Second Runner Up | Youth Action Hackathon - 2026",
+    issuer: "Tiruchirappalli City Corporation",
+    date: "Sep 2026",
+    year: "2026",
+    organization: "Tiruchirappalli City Corporation",
+    associatedWith: "NexTurn",
+    badge: "Second Runner Up",
+    image: "/assets/youth_action_hackathon_2026.jpg",
+    description: "Honored as Second Runner Up at the Youth Action Hackathon organized by Tiruchirappalli City Corporation for engineering impactful civic and smart city solutions.",
+    links: [
+      {
+        label: "Facilitation Posters",
+        url: "https://www.linkedin.com/in/arksvg/overlay/Honor/1044059680/treasury/?profileId=ACoAADFu4uYByXScY0dx5q6fLaZLXpT9EFp3LBE"
+      },
+      {
+        label: "Demo Pitching",
+        url: "https://www.linkedin.com/in/arksvg/overlay/Honor/1044059680/treasury/?profileId=ACoAADFu4uYByXScY0dx5q6fLaZLXpT9EFp3LBE"
+      }
+    ]
   },
   {
-    title: "On-the-Spot Award & 2nd Prize in Internal MobAiHackathon",
+    id: "mobai_hackathon",
+    title: "Second Place | Internal Hackathon | NextHack - MobAiThon 2026",
+    issuer: "NexTurn",
+    date: "May 2026",
+    year: "2026",
+    organization: "NexTurn",
+    associatedWith: "NexTurn",
+    badge: "Second Place",
+    image: "/assets/mobai_hackathon_2026.jpg",
+    description: "Secured Second Place in NexTurn's internal NextHack - MobAiThon 2026 with cutting-edge AI and automation platforms (BlackSqaud & NexTBiller).",
+    links: [
+      {
+        label: "Second-Place BlackSqaud",
+        url: "https://www.linkedin.com/in/arksvg/overlay/Honor/2048700986/treasury/?profileId=ACoAADFu4uYByXScY0dx5q6fLaZLXpT9EFp3LBE"
+      },
+      {
+        label: "NexTBiller",
+        url: "https://www.linkedin.com/in/arksvg/overlay/Honor/2048700986/treasury/?profileId=ACoAADFu4uYByXScY0dx5q6fLaZLXpT9EFp3LBE"
+      }
+    ]
+  },
+  {
+    id: "uyir_hackathon",
+    title: "Winners of National Level UYIR Road Safety Hackathon - 2025",
+    issuer: "Government of Tamilnadu",
+    date: "Feb 2025",
+    year: "2025",
+    organization: "Government of Tamilnadu",
+    associatedWith: "NexTurn",
+    badge: "1st Prize Champion",
+    description: "Secured 1st Prize across the state and nationally for Namma Padhai, an AI-powered road safety, navigation, and congestion mitigation platform.",
+    image: "/assets/users_cluee7fz4036qqd0171ygrjx3_fPsXOdOSxLnW8fo9-Screenshot 2025-04-20 010628.png",
+    link: "https://www.youtube.com/watch?v=Usdmuwjqqxg&ab_channel=TheNexTurnShows",
+    links: [
+      {
+        label: "Appreciation Letter",
+        url: "https://www.linkedin.com/in/arksvg/overlay/Honor/313655427/treasury/?profileId=ACoAADFu4uYByXScY0dx5q6fLaZLXpT9EFp3LBE"
+      },
+      {
+        label: "Certificate of Appreciation",
+        url: "https://www.linkedin.com/in/arksvg/overlay/Honor/313655427/treasury/?profileId=ACoAADFu4uYByXScY0dx5q6fLaZLXpT9EFp3LBE"
+      },
+      {
+        label: "Watch Feature Video",
+        url: "https://www.youtube.com/watch?v=Usdmuwjqqxg&ab_channel=TheNexTurnShows"
+      }
+    ]
+  },
+  {
+    id: "ots_award",
+    title: "On The Spot - OTS Award",
+    issuer: "NexTurn",
+    date: "Jul 2024",
     year: "2024",
     organization: "NexTurn",
-    description: "Awarded 2nd Prize and special On-the-Spot recognition for outstanding AI platform innovation at NexTurn.",
-    badge: "2nd Prize & On-the-Spot Award"
+    associatedWith: "NexTurn",
+    badge: "OTS Award",
+    image: "/assets/ots_award_nexturn.png",
+    description: "Awarded the On The Spot (OTS) Award at NexTurn for exceptional technical execution, rapid problem-solving, and dedication to mission-critical deliverables."
   },
   {
+    id: "valedictorian_honor",
     title: "Best Outgoing Student Award",
+    issuer: "Saranathan College of Engineering",
+    date: "2023",
     year: "2023",
     organization: "Saranathan College of Engineering",
     description: "Conferred the Best Outgoing Student honor for the 2023 graduating batch honoring academic and leadership excellence.",
@@ -142,19 +222,26 @@ export const achievementsData = [
     image: "/assets/users_cluee7fz4036qqd0171ygrjx3_rp5DiEZYBY33RsAQ-WhatsApp Image 2025-04-20 at 01.13.00_31c3b122.jpg"
   },
   {
+    id: "sih_finalist",
+    title: "Finalist – Smart India Hackathon (SIH)",
+    issuer: "Ministry of Education, Govt. of India",
+    date: "2022",
+    year: "2022",
+    organization: "Ministry of Education, Govt. of India",
+    description: "National Finalist in Smart India Hackathon solving critical government & industrial problem statements.",
+    badge: "National Finalist",
+    image: "/assets/sih_finalist_presentation.jpg"
+  },
+  {
+    id: "nss_award",
     title: "Best NSS Volunteer Award",
+    issuer: "Anna University",
+    date: "2021",
     year: "2021",
     organization: "Anna University",
     description: "Awarded Best NSS Volunteer by Anna University in recognition of dedication to social welfare and leadership.",
     badge: "State NSS Award",
     image: "/assets/users_cluee7fz4036qqd0171ygrjx3_0igHMlEeDDykERKm-Screenshot 2025-04-20 010814.png"
-  },
-  {
-    title: "Finalist – Smart India Hackathon (SIH)",
-    year: "2022",
-    organization: "Ministry of Education, Govt. of India",
-    description: "National Finalist in Smart India Hackathon solving critical government & industrial problem statements.",
-    badge: "National Finalist"
   }
 ];
 
@@ -164,6 +251,7 @@ export const clientProjects = [
     name: "Care Space",
     tagline: "Healthcare Web Application with Real-Time Pose Tracking",
     category: "Production Healthcare",
+    image: "https://risecxlibrary.blob.core.windows.net/clients/develop_logo_big.png",
     description: "A production healthcare application with a canvas-based visualization layer for rendering real-time pose landmarks and user interactions.",
     problem: "Healthcare interfaces needed a touch-free, real-time way to track posture and gesture for patient interaction, without sacrificing UI responsiveness.",
     features: [
