@@ -1,11 +1,10 @@
 import React from 'react';
 import { 
-  Briefcase, Trophy, Award, GraduationCap, Calendar, 
-  CheckCircle2, ExternalLink, Sparkles, ShieldCheck 
+  Briefcase, GraduationCap, Calendar, 
+  CheckCircle2, ShieldCheck 
 } from 'lucide-react';
 import { 
   professionalExperience, 
-  achievementsData, 
   educationData, 
   certificationsData 
 } from '../data/resume';
@@ -85,67 +84,6 @@ export default function Experience() {
         </div>
       </section>
 
-      {/* Key Achievements & Awards */}
-      <section className="space-y-6">
-        <div className="flex items-center gap-2">
-          <Trophy className="w-5 h-5 text-amber-500" />
-          <h2 className="text-2xl font-bold font-heading text-zinc-900 dark:text-white">
-            Key Achievements & Hackathon Honors
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {achievementsData.map((ach, i) => (
-            <div
-              key={i}
-              className="p-6 rounded-2xl glow-border flex flex-col justify-between space-y-4 bg-white dark:bg-zinc-950/60 border border-zinc-200 dark:border-white/10 shadow-sm"
-            >
-              <div>
-                <div className="flex items-center justify-between gap-2">
-                  <span className="px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[11px] font-bold border border-amber-500/20">
-                    {ach.badge}
-                  </span>
-                  <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">
-                    {ach.year}
-                  </span>
-                </div>
-
-                <h3 className="text-lg font-bold font-heading text-zinc-900 dark:text-white mt-2">
-                  {ach.title}
-                </h3>
-                <div className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 mt-0.5">
-                  {ach.organization}
-                </div>
-
-                <p className="text-xs md:text-sm text-zinc-600 dark:text-zinc-300 mt-3 leading-relaxed">
-                  {ach.description}
-                </p>
-              </div>
-
-              {ach.image && (
-                <div className="relative w-full h-44 rounded-xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 mt-2">
-                  <img src={ach.image} alt={ach.title} className="w-full h-full object-cover object-top" />
-                </div>
-              )}
-
-              {ach.link && (
-                <div className="pt-2">
-                  <a
-                    href={ach.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline"
-                  >
-                    <span>Watch Feature Video</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Education & Certifications Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         {/* Education */}
@@ -164,9 +102,15 @@ export default function Experience() {
             >
               <div className="flex items-start justify-between gap-2">
                 <div>
-                  <span className="px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-600 dark:text-sky-400 text-[11px] font-bold border border-sky-500/20">
-                    CGPA: {edu.cgpa}
-                  </span>
+                  {edu.status ? (
+                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[11px] font-bold border border-emerald-500/20">
+                      {edu.status}
+                    </span>
+                  ) : edu.cgpa ? (
+                    <span className="px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-600 dark:text-sky-400 text-[11px] font-bold border border-sky-500/20">
+                      CGPA: {edu.cgpa}
+                    </span>
+                  ) : null}
                   <h3 className="text-lg font-bold font-heading text-zinc-900 dark:text-white mt-2">
                     {edu.degree}
                   </h3>

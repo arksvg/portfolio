@@ -9,8 +9,31 @@ export default function ProjectCard({ project, onSelect }) {
     <div
       className="group relative flex flex-col justify-between rounded-2xl glow-border overflow-hidden bg-white dark:bg-zinc-950/60 border border-zinc-200/80 dark:border-white/10 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
     >
-      {/* Top Banner (Motif or Image) */}
-      {project.motif && MotifComponent ? (
+      {/* Top Banner (Image or Motif) */}
+      {project.image ? (
+        <div 
+          onClick={() => onSelect(project)}
+          className="relative h-48 flex items-center justify-center overflow-hidden bg-zinc-100 dark:bg-zinc-950/80 cursor-pointer border-b border-zinc-200/60 dark:border-white/5 group"
+        >
+          <img
+            src={project.image}
+            alt={project.title || project.name}
+            className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+          {project.badge && (
+            <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-amber-500 text-white text-[11px] font-bold shadow-md z-10">
+              {project.badge}
+            </span>
+          )}
+          {project.category && (
+            <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[11px] font-semibold text-white shadow-md z-10">
+              {project.category}
+            </span>
+          )}
+        </div>
+      ) : project.motif && MotifComponent ? (
         <div 
           onClick={() => onSelect(project)}
           className="relative h-48 flex items-center justify-center overflow-hidden bg-slate-50 dark:bg-zinc-900/50 cursor-pointer border-b border-zinc-200/60 dark:border-white/5"
@@ -27,29 +50,6 @@ export default function ProjectCard({ project, onSelect }) {
             <span className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/90 dark:bg-black/60 backdrop-blur-md border border-zinc-200 dark:border-white/10 text-[11px] font-semibold text-indigo-600 dark:text-indigo-300 shadow-sm">
               <Sparkles className="w-3 h-3 text-indigo-500 dark:text-indigo-400" />
               <span>{project.category}</span>
-            </span>
-          )}
-        </div>
-      ) : project.image ? (
-        <div 
-          onClick={() => onSelect(project)}
-          className="relative h-48 overflow-hidden bg-zinc-100 dark:bg-zinc-950 cursor-pointer border-b border-zinc-200/60 dark:border-white/5"
-        >
-          <img
-            src={project.image}
-            alt={project.title || project.name}
-            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-            loading="lazy"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-          {project.badge && (
-            <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-amber-500 text-white text-[11px] font-bold shadow-md">
-              {project.badge}
-            </span>
-          )}
-          {project.category && (
-            <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-[11px] font-semibold text-white shadow-md">
-              {project.category}
             </span>
           )}
         </div>

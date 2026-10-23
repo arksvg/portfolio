@@ -6,6 +6,7 @@ import {
   Terminal, Globe, ArrowUpRight, Copy, Check 
 } from 'lucide-react';
 import { profile, clientProjects, coreProjects } from '../data/resume';
+import { useProjectVisibility } from '../context/ProjectVisibilityContext';
 import ProjectCard from '../components/ui/ProjectCard';
 import ProjectModal from '../components/ProjectModal';
 import MapWidget from '../components/MapWidget';
@@ -14,6 +15,7 @@ export default function Home({ onToast }) {
   const [selectedProject, setSelectedProject] = useState(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
+  const { showClientProjects, isFreelanceProject } = useProjectVisibility();
 
   const handleCopy = (text, type) => {
     navigator.clipboard.writeText(text);
@@ -28,12 +30,16 @@ export default function Home({ onToast }) {
     }
   };
 
+  const activeClientProjects = showClientProjects
+    ? clientProjects
+    : clientProjects.filter((p) => !isFreelanceProject(p));
+
   // Top featured projects for homepage spotlight
   const featuredSpotlight = [
     clientProjects[0], // Care Space
     clientProjects[1], // Admin ERP
     coreProjects[0],   // UYIR Hackathon Winner
-    clientProjects[2]  // Sam's Culinary
+    showClientProjects ? clientProjects[2] : coreProjects[4] // Sam's Culinary if toggled ON, otherwise Currency Converter (Live Web App)
   ];
 
   return (
@@ -114,7 +120,7 @@ export default function Home({ onToast }) {
               <img
                 src={profile.avatar}
                 alt={profile.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-top"
               />
             </div>
           </div>
@@ -154,7 +160,7 @@ export default function Home({ onToast }) {
             to="/projects"
             className="text-xs font-semibold text-indigo-500 dark:text-indigo-400 hover:underline flex items-center gap-1"
           >
-            <span>View All ({clientProjects.length + coreProjects.length} Projects)</span>
+            <span>View All ({activeClientProjects.length + coreProjects.length} Projects)</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>

@@ -107,7 +107,7 @@ export default function Contact({ onToast }) {
               Send a Direct Message
             </h2>
             <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
-              Powered by FormSubmit — emails go directly to <span className="font-semibold text-indigo-600 dark:text-indigo-400">{profile.contact.email}</span>.
+              Messages go directly to <span className="font-semibold text-indigo-600 dark:text-indigo-400">{profile.contact.email}</span>.
             </p>
           </div>
 
@@ -196,12 +196,12 @@ export default function Contact({ onToast }) {
                 {isSubmitting ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin" />
-                    <span>Sending via FormSubmit...</span>
+                    <span>Sending Message...</span>
                   </>
                 ) : (
                   <>
                     <Send className="w-4 h-4" />
-                    <span>Send Message (via FormSubmit)</span>
+                    <span>Send Message</span>
                   </>
                 )}
               </button>

@@ -1,12 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUp, Mail, Phone, MapPin } from 'lucide-react';
+import { ArrowUp, Mail, Phone, MapPin, Lock, Unlock } from 'lucide-react';
 import { LinkedInIcon, GitHubIcon, InstagramIcon, WhatsAppIcon, HackerRankIcon } from '../Icons';
 import { profile } from '../../data/resume';
+import { useProjectVisibility } from '../../context/ProjectVisibilityContext';
 
-export default function Footer() {
+export default function Footer({ onToast }) {
+  const { showClientProjects, toggleClientProjects } = useProjectVisibility();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleToggle = () => {
+    toggleClientProjects();
+    if (onToast) {
+      onToast({
+        message: !showClientProjects 
+          ? "Showcase unlocked" 
+          : "Showcase locked"
+      });
+    }
   };
 
   return (
@@ -42,10 +56,13 @@ export default function Footer() {
                 <Link to="/projects" className="hover:text-indigo-500 transition-colors">Projects & Client Work</Link>
               </li>
               <li>
-                <Link to="/design" className="hover:text-indigo-500 transition-colors">UI/UX & Figma</Link>
+                <Link to="/experience" className="hover:text-indigo-500 transition-colors">Work Experience</Link>
               </li>
               <li>
-                <Link to="/experience" className="hover:text-indigo-500 transition-colors">Experience & Awards</Link>
+                <Link to="/achievements" className="hover:text-indigo-500 transition-colors">Achievements & Honors</Link>
+              </li>
+              <li>
+                <Link to="/design" className="hover:text-indigo-500 transition-colors">UI/UX & Figma</Link>
               </li>
               <li>
                 <Link to="/contact" className="hover:text-indigo-500 transition-colors">Contact Hub</Link>
@@ -118,9 +135,28 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-zinc-200/40 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <div>
-            © {new Date().getFullYear()} {profile.name}. All rights reserved.
+          <div className="flex items-center gap-2 text-zinc-500 dark:text-zinc-400">
+            <span>© {new Date().getFullYear()} {profile.name}. All rights reserved.</span>
+
+            {/* Secret discreet trigger known only by you */}
+            <button
+              onClick={handleToggle}
+              type="button"
+              className={`p-0.5 rounded transition-colors inline-flex items-center justify-center ${
+                showClientProjects 
+                  ? 'text-emerald-500 hover:text-emerald-400 opacity-90' 
+                  : 'text-zinc-400/25 hover:text-zinc-400 dark:text-zinc-700 hover:dark:text-zinc-400'
+              }`}
+              aria-label="Toggle mode"
+            >
+              {showClientProjects ? (
+                <Unlock className="w-3 h-3" />
+              ) : (
+                <Lock className="w-3 h-3" />
+              )}
+            </button>
           </div>
+
           <button
             onClick={scrollToTop}
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-zinc-100 dark:bg-white/5 hover:bg-indigo-500 hover:text-white text-zinc-600 dark:text-zinc-400 transition-all border border-zinc-200/40 dark:border-white/10"
