@@ -141,3 +141,80 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(148, 163, 184, 0.4);
 }
+
+/* Hero Portrait Cinematic Floating Animations */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(8deg); }
+  50% { transform: translateY(-8px) rotate(9deg); }
+}
+
+@keyframes floatReverse {
+  0%, 100% { transform: translateY(0px) rotate(-10deg); }
+  50% { transform: translateY(8px) rotate(-9deg); }
+}
+
+@keyframes floatChip1 {
+  0%, 100% { transform: translateY(0px) rotate(18deg); }
+  50% { transform: translateY(-7px) rotate(21deg); }
+}
+
+@keyframes floatChip2 {
+  0%, 100% { transform: translateY(0px) rotate(-14deg); }
+  50% { transform: translateY(7px) rotate(-11deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { transform: scale(1); opacity: 0.75; }
+  50% { transform: scale(1.08); opacity: 0.95; }
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-6px) scale(1.06); }
+}
+
+@keyframes floatOrbReverse {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(6px) scale(1.06); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 7s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 8s ease-in-out infinite;
+}
+
+.animate-float-chip-1 {
+  animation: floatChip1 5s ease-in-out infinite;
+}
+
+.animate-float-chip-2 {
+  animation: floatChip2 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4.5s ease-in-out infinite;
+}
+
+.animate-float-orb {
+  animation: floatOrb 5.5s ease-in-out infinite;
+}
+
+.animate-float-orb-reverse {
+  animation: floatOrbReverse 6.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-slow,
+  .animate-float-reverse,
+  .animate-float-chip-1,
+  .animate-float-chip-2,
+  .animate-pulse-glow,
+  .animate-float-orb,
+  .animate-float-orb-reverse {
+    animation: none !important;
+  }
+}
+

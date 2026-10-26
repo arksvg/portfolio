@@ -26,11 +26,11 @@ export default function ProjectModal({ item, onClose }) {
 
         {/* Visual Banner (Image or Motif Concept) */}
         {item.image ? (
-          <div className="relative w-full h-64 md:h-80 rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-950 border border-zinc-200 dark:border-white/10 mb-6 group">
+          <div className={`relative w-full h-64 md:h-80 rounded-2xl overflow-hidden ${item.bannerBg || 'bg-zinc-100 dark:bg-zinc-950'} border border-zinc-200 dark:border-white/10 mb-6 group`}>
             <img
               src={item.image}
               alt={item.title || item.name}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              className={`w-full h-full ${item.id === 'care_space' || item.objectFit === 'cover' ? 'object-cover' : 'object-contain p-6'} group-hover:scale-105 transition-transform duration-500`}
             />
             {item.category && (
               <div className="absolute top-4 left-4 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-xs font-semibold text-white flex items-center gap-1.5 shadow-lg">

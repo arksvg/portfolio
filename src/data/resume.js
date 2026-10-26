@@ -128,13 +128,29 @@ export const certificationsData = [
 
 export const achievementsData = [
   {
+    id: "vcet_neural_forum_2026",
+    title: "Keynote Speaker & Placement Masterclass | VCET Madurai",
+    issuer: "Velammal College of Engineering & Technology",
+    organization: "VCET – Department of AI & DS",
+    date: "Sep 2026",
+    year: "2026",
+    badge: "Keynote Honor",
+    image: "/assets/vcet_campus_to_corporate_roadmap_2026.jpg",
+    description: "Delivered an industry masterclass on 'Campus to Corporate: IT Placement Roadmap' for AI & DS students, honored with a memento of appreciation.",
+    links: [
+      {
+        label: "Speaker Profile",
+        url: "https://www.linkedin.com/in/arksvg/"
+      }
+    ]
+  },
+  {
     id: "youth_action_hackathon",
     title: "Second Runner Up | Youth Action Hackathon - 2026",
     issuer: "Tiruchirappalli City Corporation",
     date: "Sep 2026",
     year: "2026",
     organization: "Tiruchirappalli City Corporation",
-    associatedWith: "NexTurn",
     badge: "Second Runner Up",
     image: "/assets/youth_action_hackathon_2026.jpg",
     description: "Honored as Second Runner Up at the Youth Action Hackathon organized by Tiruchirappalli City Corporation for engineering impactful civic and smart city solutions.",
@@ -150,13 +166,29 @@ export const achievementsData = [
     ]
   },
   {
+    id: "sih_jury_2026",
+    title: "Smart India Hackathon (SIH) – Jury Member",
+    issuer: "Saranathan College of Engineering",
+    organization: "Internal Hackathon for Smart India Hackathon 2026",
+    date: "Sep 2026",
+    year: "2026",
+    badge: "SIH Jury Member",
+    image: "/assets/sih_jury_evaluator_2026.jpg",
+    description: "Returned as a Jury Member to evaluate innovative student teams and select finalists for Smart India Hackathon (SIH) 2026.",
+    links: [
+      {
+        label: "Evaluator Profile",
+        url: "https://www.linkedin.com/in/arksvg/"
+      }
+    ]
+  },
+  {
     id: "mobai_hackathon",
     title: "Second Place | Internal Hackathon | NextHack - MobAiThon 2026",
     issuer: "NexTurn",
     date: "May 2026",
     year: "2026",
     organization: "NexTurn",
-    associatedWith: "NexTurn",
     badge: "Second Place",
     image: "/assets/mobai_hackathon_2026.jpg",
     description: "Secured Second Place in NexTurn's internal NextHack - MobAiThon 2026 with cutting-edge AI and automation platforms (BlackSqaud & NexTBiller).",
@@ -172,13 +204,29 @@ export const achievementsData = [
     ]
   },
   {
+    id: "alumni_speaker_cse_2026",
+    title: "Alumni Keynote Speaker | Saranathan College of Engineering",
+    issuer: "Saranathan College of Engineering",
+    organization: "Saranathan College of Engineering (Dept. of CSE)",
+    date: "Mar 2026",
+    year: "2026",
+    badge: "Alumni Keynote",
+    image: "/assets/feed_4.jpg",
+    description: "Invited as an alumnus to deliver a talk to 3rd-year CSE students on real-time corporate AI applications and enterprise tech stacks.",
+    links: [
+      {
+        label: "Speaker Profile",
+        url: "https://www.linkedin.com/in/arksvg/"
+      }
+    ]
+  },
+  {
     id: "uyir_hackathon",
     title: "Winners of National Level UYIR Road Safety Hackathon - 2025",
     issuer: "Government of Tamilnadu",
     date: "Feb 2025",
     year: "2025",
     organization: "Government of Tamilnadu",
-    associatedWith: "NexTurn",
     badge: "1st Prize Champion",
     description: "Secured 1st Prize across the state and nationally for Namma Padhai, an AI-powered road safety, navigation, and congestion mitigation platform.",
     image: "/assets/users_cluee7fz4036qqd0171ygrjx3_fPsXOdOSxLnW8fo9-Screenshot 2025-04-20 010628.png",
@@ -205,7 +253,6 @@ export const achievementsData = [
     date: "Jul 2024",
     year: "2024",
     organization: "NexTurn",
-    associatedWith: "NexTurn",
     badge: "OTS Award",
     image: "/assets/ots_award_nexturn.png",
     description: "Awarded the On The Spot (OTS) Award at NexTurn for exceptional technical execution, rapid problem-solving, and dedication to mission-critical deliverables."
@@ -252,6 +299,7 @@ export const clientProjects = [
     tagline: "Healthcare Web Application with Real-Time Pose Tracking",
     category: "Production Healthcare",
     image: "https://risecxlibrary.blob.core.windows.net/clients/develop_logo_big.png",
+    objectFit: "cover",
     description: "A production healthcare application with a canvas-based visualization layer for rendering real-time pose landmarks and user interactions.",
     problem: "Healthcare interfaces needed a touch-free, real-time way to track posture and gesture for patient interaction, without sacrificing UI responsiveness.",
     features: [
@@ -265,6 +313,28 @@ export const clientProjects = [
     link: null,
     motif: "landmarks",
     glowColor: "rgba(56, 189, 248, 0.25)"
+  },
+  {
+    id: "reclaimz",
+    name: "Reclaimz",
+    tagline: "Fintech Revenue Cycle & Claims Analytics Platform",
+    category: "Production FinTech",
+    image: "/assets/reclaimz_logo.png",
+    bannerBg: "bg-zinc-950",
+    description: "Enterprise fintech revenue-cycle platform delivering high-density claims analytics, financial forecasting, and interactive risk-management dashboards.",
+    problem: "Financial institutions and enterprise claims teams required centralized, high-density visualization of multi-payer claims, exposure heat maps, and cash forecasting with instant multi-criteria filtering across complex datasets.",
+    features: [
+      "Claims Analytics module with AG Grid data tables featuring viewport-fit sizing, dynamic column definitions, and totals rows",
+      "Reusable global filter engine with date-types, predefined ranges, multi-select dropdowns, auto-apply, and saved custom views",
+      "Financial Command Center dashboards for Cash Forecast, Profitability, Cost Accounting, and exposure heat maps",
+      "Redux Toolkit Query (RTK Query) integration delivering claims, payer, and risk data with shimmer skeleton loaders",
+      "Enterprise security with AWS Amplify Multi-Factor Authentication (MFA) and full WCAG-compliant light/dark themes"
+    ],
+    contribution: "Built and maintained the Claims Analytics module and global filter engine, integrated RTK Query data pipelines, and engineered high-density AG Grid dashboards with AWS Amplify MFA.",
+    tech: ["React", "TypeScript", "Redux Toolkit", "RTK Query", "Material UI", "AG Grid", "AWS Amplify", "Storybook", "Vite"],
+    link: null,
+    motif: "analytics",
+    glowColor: "rgba(14, 165, 233, 0.25)"
   },
   {
     id: "admin_erp",

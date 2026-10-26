@@ -19,10 +19,10 @@ export default function Experience() {
           <span>Professional Background</span>
         </div>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-zinc-900 dark:text-white tracking-tight">
-          Experience & Achievements
+          Work Experience
         </h1>
         <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 max-w-2xl leading-relaxed">
-          Fullstack development experience with React, Java & Spring Boot, hackathon victories, academic honors, and verified certifications.
+          Fullstack development experience with React, Java & Spring Boot, enterprise cloud architectures, and verified certifications.
         </p>
       </div>
 
@@ -100,8 +100,8 @@ export default function Experience() {
               key={edu.id}
               className="p-6 rounded-2xl glow-border space-y-3 bg-white dark:bg-zinc-950/60 border border-zinc-200 dark:border-white/10 shadow-sm"
             >
-              <div className="flex items-start justify-between gap-2">
-                <div>
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0 pr-2">
                   {edu.status ? (
                     <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[11px] font-bold border border-emerald-500/20">
                       {edu.status}
@@ -119,7 +119,7 @@ export default function Experience() {
                   </div>
                 </div>
 
-                <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">
+                <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400 whitespace-nowrap shrink-0">
                   {edu.period}
                 </span>
               </div>

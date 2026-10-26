@@ -6,21 +6,14 @@ import { profile } from '../../data/resume';
 import { useProjectVisibility } from '../../context/ProjectVisibilityContext';
 
 export default function Footer({ onToast }) {
-  const { showClientProjects, toggleClientProjects } = useProjectVisibility();
+  const { showClientProjects, openUnlockModal } = useProjectVisibility();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleToggle = () => {
-    toggleClientProjects();
-    if (onToast) {
-      onToast({
-        message: !showClientProjects 
-          ? "Showcase unlocked" 
-          : "Showcase locked"
-      });
-    }
+    openUnlockModal();
   };
 
   return (
