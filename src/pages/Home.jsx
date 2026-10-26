@@ -10,6 +10,7 @@ import { useProjectVisibility } from '../context/ProjectVisibilityContext';
 import ProjectCard from '../components/ui/ProjectCard';
 import ProjectModal from '../components/ProjectModal';
 import MapWidget from '../components/MapWidget';
+import HeroPortrait from '../components/HeroPortrait';
 
 export default function Home({ onToast }) {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -36,25 +37,27 @@ export default function Home({ onToast }) {
 
   // Top featured projects for homepage spotlight
   const featuredSpotlight = [
-    clientProjects[0], // Care Space
-    clientProjects[1], // Admin ERP
+    clientProjects.find((p) => p.id === 'care_space') || clientProjects[0],
+    clientProjects.find((p) => p.id === 'reclaimz') || clientProjects[1],
     coreProjects[0],   // UYIR Hackathon Winner
-    showClientProjects ? clientProjects[2] : coreProjects[4] // Sam's Culinary if toggled ON, otherwise Currency Converter (Live Web App)
+    showClientProjects 
+      ? (clientProjects.find((p) => p.id === 'sams_culinary') || clientProjects[3])
+      : coreProjects[4] // Live Currency Converter
   ];
 
   return (
     <div className="space-y-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
       {/* Hero Section */}
       <section className="relative pt-6 md:pt-12 pb-8">
-        <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-14">
           {/* Left Content */}
-          <div className="flex-1 space-y-6 text-center lg:text-left">
+          <div className="flex-1 space-y-6 text-center lg:text-left order-1">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 text-indigo-500 dark:text-indigo-400 text-xs font-semibold border border-indigo-500/20">
               <Code2 className="w-3.5 h-3.5" />
               <span>Associate Full Stack Developer L3 @ NexTurn</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-heading text-zinc-900 dark:text-white tracking-tight leading-[1.15]">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-zinc-900 dark:text-white tracking-tight leading-[1.2]">
               Fullstack Developer Building <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">Scalable Web Systems</span> & Intuitive UIs
             </h1>
 
@@ -114,15 +117,9 @@ export default function Home({ onToast }) {
             </div>
           </div>
 
-          {/* Right Avatar Card (Clean Solid Border) */}
-          <div className="relative shrink-0">
-            <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-3xl overflow-hidden border-2 border-zinc-200 dark:border-zinc-800 shadow-xl bg-zinc-100 dark:bg-zinc-900 transition-transform hover:scale-[1.02] duration-300">
-              <img
-                src={profile.avatar}
-                alt={profile.name}
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
+          {/* Right Hero Cinematic Portrait Composition */}
+          <div className="w-full lg:w-auto flex-1 flex justify-center lg:justify-end order-2">
+            <HeroPortrait />
           </div>
         </div>
       </section>

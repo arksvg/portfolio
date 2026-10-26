@@ -12,7 +12,7 @@ export default function Achievements() {
   const categories = [
     { id: 'all', label: `All Honors (${achievementsData.length})` },
     { id: 'hackathons', label: 'Hackathons & Competitions' },
-    { id: 'corporate', label: 'Corporate & OTS' },
+    { id: 'corporate', label: 'Corporate & Keynotes' },
     { id: 'academic', label: 'Academic & Civic' }
   ];
 
@@ -22,10 +22,10 @@ export default function Achievements() {
       return item.id.includes('hackathon') || item.badge.toLowerCase().includes('runner') || item.badge.toLowerCase().includes('winner') || item.badge.toLowerCase().includes('place');
     }
     if (activeCategory === 'corporate') {
-      return item.associatedWith === 'NexTurn' || item.id.includes('ots');
+      return item.associatedWith === 'NexTurn' || item.id.includes('ots') || item.id.includes('speaker') || item.id.includes('vcet') || item.badge.toLowerCase().includes('keynote');
     }
     if (activeCategory === 'academic') {
-      return item.id.includes('valedictorian') || item.id.includes('nss') || item.id.includes('sih');
+      return item.id.includes('valedictorian') || item.id.includes('nss') || item.id.includes('sih') || item.id.includes('speaker');
     }
     return true;
   });
@@ -141,16 +141,9 @@ export default function Achievements() {
                   {item.badge}
                 </span>
 
-                <div className="flex items-center gap-2">
-                  {item.associatedWith && (
-                    <span className="px-2.5 py-0.5 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-[11px] font-semibold border border-indigo-500/15">
-                      Associated with {item.associatedWith}
-                    </span>
-                  )}
-                  <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">
-                    {item.date || item.year}
-                  </span>
-                </div>
+                <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">
+                  {item.date || item.year}
+                </span>
               </div>
 
               {/* Title & Organization */}
@@ -175,7 +168,7 @@ export default function Achievements() {
                 {item.description}
               </p>
 
-              {/* Image Preview (Interactive click to expand) */}
+              {/* Standard Card Media */}
               {item.image && (
                 <div 
                   onClick={() => setPreviewImage(item)}

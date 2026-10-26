@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Toast from './components/Toast';
+import SecurityConsoleModal from './components/SecurityConsoleModal';
 import { ProjectVisibilityProvider } from './context/ProjectVisibilityContext';
 
 import Home from './pages/Home';
@@ -53,6 +54,9 @@ export default function App() {
 
         {/* Footer Layout */}
         <Footer onToast={showToast} />
+
+        {/* Security Console Terminal Modal for Global Unlock */}
+        <SecurityConsoleModal onToast={showToast} />
 
         {/* Toast Notification */}
         <Toast
