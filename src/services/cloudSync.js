@@ -1,6 +1,6 @@
 // Cloud synchronization service for global portfolio unlock state
-const CLOUD_API_URL = 'https://api.restful-api.dev/objects/ff808181a09d98f701a176f331a50f70';
-const BACKUP_URL = 'https://extendsclass.com/api/json-storage/bin/ecdcabc';
+const CLOUD_STORE_PRIMARY = 'https://extendsclass.com/api/json-storage/bin/ecdcabc';
+const CLOUD_STORE_BACKUP = 'https://extendsclass.com/api/json-storage/bin/daacbae';
 
 export const SECRET_CODE = 'Arksvg@23!';
 
@@ -9,47 +9,72 @@ export const SECRET_CODE = 'Arksvg@23!';
  * Returns boolean or null if unreachable
  */
 export async function fetchGlobalUnlockState() {
-  // 1. Fetch from high-speed Cloud API (with 4s timeout)
+  // 1. If running in browser, try same-origin Vercel serverless endpoint first
+  if (typeof window !== 'undefined' && window.location && window.location.origin) {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 2500);
+
+      const res = await fetch(`/api/unlock-state?t=${Date.now()}`, {
+        cache: 'no-store',
+        headers: { Accept: 'application/json' },
+        signal: controller.signal
+      });
+      clearTimeout(timeoutId);
+
+      const contentType = res.headers.get('content-type') || '';
+      if (res.ok && contentType.includes('application/json')) {
+        const json = await res.json();
+        if (json && typeof json.unlocked === 'boolean') {
+          return json.unlocked;
+        }
+      }
+    } catch {
+      // Fall through to direct cloud storage
+    }
+  }
+
+  // 2. Fetch from primary cloud store
   try {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 4000);
+    const timeoutId = setTimeout(() => controller.abort(), 3500);
 
-    const res = await fetch(`${CLOUD_API_URL}?t=${Date.now()}`, {
+    const res = await fetch(`${CLOUD_STORE_PRIMARY}?t=${Date.now()}`, {
       cache: 'no-store',
-      headers: { 'Accept': 'application/json' },
+      headers: { Accept: 'application/json' },
       signal: controller.signal
     });
     clearTimeout(timeoutId);
 
     if (res.ok) {
       const json = await res.json();
-      if (json && json.data && typeof json.data.unlocked === 'boolean') {
-        return json.data.unlocked;
+      if (json && typeof json.unlocked === 'boolean') {
+        return json.unlocked;
       }
     }
-  } catch (err) {
-    // try fallback
+  } catch {
+    // try backup
   }
 
-  // 2. Fallback secondary cloud store
+  // 3. Fallback secondary cloud store
   try {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 3000);
+    const timeoutId = setTimeout(() => controller.abort(), 3500);
 
-    const res = await fetch(`${BACKUP_URL}?t=${Date.now()}`, {
+    const res = await fetch(`${CLOUD_STORE_BACKUP}?t=${Date.now()}`, {
       cache: 'no-store',
-      headers: { 'Accept': 'application/json' },
+      headers: { Accept: 'application/json' },
       signal: controller.signal
     });
     clearTimeout(timeoutId);
 
     if (res.ok) {
       const data = await res.json();
-      if (typeof data.unlocked === 'boolean') {
+      if (data && typeof data.unlocked === 'boolean') {
         return data.unlocked;
       }
     }
-  } catch (err) {
+  } catch {
     // ignore
   }
 
@@ -61,17 +86,30 @@ export async function fetchGlobalUnlockState() {
  */
 export async function updateGlobalUnlockState(unlocked) {
   const timestamp = new Date().toISOString();
+  const payload = JSON.stringify({ unlocked, updatedAt: timestamp });
 
-  // Primary update
+  // 1. Update through Vercel API endpoint if reachable
+  const apiPromise = (async () => {
+    if (typeof window === 'undefined') return false;
+    try {
+      const res = await fetch('/api/unlock-state', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ unlocked, code: SECRET_CODE })
+      });
+      return res.ok;
+    } catch {
+      return false;
+    }
+  })();
+
+  // 2. Update primary cloud store directly
   const primaryPromise = (async () => {
     try {
-      const res = await fetch(CLOUD_API_URL, {
+      const res = await fetch(CLOUD_STORE_PRIMARY, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: 'arksvg_portfolio_config',
-          data: { unlocked, updatedAt: timestamp }
-        })
+        body: payload
       });
       return res.ok;
     } catch {
@@ -79,13 +117,13 @@ export async function updateGlobalUnlockState(unlocked) {
     }
   })();
 
-  // Backup update
+  // 3. Update backup cloud store directly
   const backupPromise = (async () => {
     try {
-      const res = await fetch(BACKUP_URL, {
+      const res = await fetch(CLOUD_STORE_BACKUP, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ unlocked, updatedAt: timestamp })
+        body: payload
       });
       return res.ok;
     } catch {
@@ -93,7 +131,7 @@ export async function updateGlobalUnlockState(unlocked) {
     }
   })();
 
-  const results = await Promise.allSettled([primaryPromise, backupPromise]);
+  const results = await Promise.allSettled([apiPromise, primaryPromise, backupPromise]);
   const succeeded = results.some(
     (r) => r.status === 'fulfilled' && r.value === true
   );
