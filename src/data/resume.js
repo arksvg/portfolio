@@ -24,7 +24,7 @@ export const profile = {
     instagram: "https://instagram.com/arksvg",
     whatsapp: "https://api.whatsapp.com/send/?phone=9445177941&text=Hi%21&type=phone_number&app_absent=0",
     hackerrank: "https://www.hackerrank.com/profile/arksvg",
-    resume: "https://drive.google.com/file/d/1MAPn84UAtn8vQkSbnWqnt4Gh0aubdhtM/view?usp=sharing"
+    resume: "https://drive.google.com/file/d/1GvSePupfaKQwo2jXlSbr513jlFZz2POR/view?usp=drive_link"
   },
   stats: [
     { label: "Experience", value: "3+ Years", sub: "React & Spring Boot" },

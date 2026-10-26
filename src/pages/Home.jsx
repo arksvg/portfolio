@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { 
   ArrowRight, Download, Mail, Phone, MapPin, 
   Sparkles, Cloud, Code2, Palette, ShieldCheck, 
-  Terminal, Globe, ArrowUpRight, Copy, Check 
+  Terminal, Globe, ArrowUpRight, Copy, Check,
+  Trophy, Medal, Award, ExternalLink, Building2, Eye
 } from 'lucide-react';
-import { profile, clientProjects, coreProjects } from '../data/resume';
+import { profile, clientProjects, coreProjects, achievementsData } from '../data/resume';
 import { useProjectVisibility } from '../context/ProjectVisibilityContext';
 import ProjectCard from '../components/ui/ProjectCard';
 import ProjectModal from '../components/ProjectModal';
@@ -14,6 +15,7 @@ import HeroPortrait from '../components/HeroPortrait';
 
 export default function Home({ onToast }) {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [previewImage, setPreviewImage] = useState(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [copiedPhone, setCopiedPhone] = useState(false);
   const { showClientProjects, isFreelanceProject } = useProjectVisibility();
@@ -35,15 +37,17 @@ export default function Home({ onToast }) {
     ? clientProjects
     : clientProjects.filter((p) => !isFreelanceProject(p));
 
-  // Top featured projects for homepage spotlight
+  // Top 2 featured production & client projects for homepage spotlight
   const featuredSpotlight = [
     clientProjects.find((p) => p.id === 'care_space') || clientProjects[0],
-    clientProjects.find((p) => p.id === 'reclaimz') || clientProjects[1],
-    coreProjects[0],   // UYIR Hackathon Winner
-    showClientProjects 
-      ? (clientProjects.find((p) => p.id === 'sams_culinary') || clientProjects[3])
-      : coreProjects[4] // Live Currency Converter
-  ];
+    clientProjects.find((p) => p.id === 'reclaimz') || clientProjects[1]
+  ].filter(Boolean);
+
+  // Spotlight Achievements: 1st State Level Hackathon & Second Runner Up Youth Action Hackathon
+  const spotlightAchievements = [
+    achievementsData.find((a) => a.id === 'uyir_hackathon'),
+    achievementsData.find((a) => a.id === 'youth_action_hackathon')
+  ].filter(Boolean);
 
   return (
     <div className="space-y-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -173,6 +177,117 @@ export default function Home({ onToast }) {
         </div>
       </section>
 
+      {/* Spotlight Achievements: 1st State Level Hackathon & Best Outgoing Student Award */}
+      <section className="space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <div className="text-xs font-bold uppercase tracking-wider text-amber-500 dark:text-amber-400 flex items-center gap-1.5">
+              <Trophy className="w-3.5 h-3.5" />
+              <span>Spotlight Achievements</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-bold font-heading text-zinc-900 dark:text-white mt-1">
+              Top Honors & Accolades
+            </h2>
+          </div>
+          <Link
+            to="/achievements"
+            className="text-xs font-semibold text-amber-600 dark:text-amber-400 hover:underline flex items-center gap-1"
+          >
+            <span>View All ({achievementsData.length} Honors)</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {spotlightAchievements.map((item) => (
+            <div
+              key={item.id || item.title}
+              className="p-6 sm:p-7 rounded-3xl glow-border flex flex-col justify-between space-y-5 bg-white dark:bg-zinc-950/60 border border-zinc-200 dark:border-white/10 shadow-sm hover:shadow-xl transition-all duration-300 group"
+            >
+              <div className="space-y-4">
+                {/* Header Badges */}
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span className="px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold border border-amber-500/20 inline-flex items-center gap-1.5">
+                    <Trophy className="w-3.5 h-3.5" />
+                    {item.badge}
+                  </span>
+
+                  <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400">
+                    {item.date || item.year}
+                  </span>
+                </div>
+
+                {/* Title & Organization */}
+                <div>
+                  <h3 className="text-xl font-bold font-heading text-zinc-900 dark:text-white group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors leading-snug">
+                    {item.title}
+                  </h3>
+                  <div className="text-xs font-medium text-zinc-500 dark:text-zinc-400 mt-1 flex items-center gap-1.5">
+                    <Building2 className="w-3.5 h-3.5 text-zinc-400" />
+                    <span>Issued by {item.issuer || item.organization}</span>
+                    {(item.date || item.year) && (
+                      <>
+                        <span>•</span>
+                        <span>{item.date || item.year}</span>
+                      </>
+                    )}
+                  </div>
+                </div>
+
+                {/* Description */}
+                <p className="text-xs md:text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+                  {item.description}
+                </p>
+
+                {/* Card Media Preview */}
+                {item.image && (
+                  <div 
+                    onClick={() => setPreviewImage(item)}
+                    className="relative w-full h-56 rounded-2xl overflow-hidden bg-zinc-950 border border-zinc-200 dark:border-white/10 mt-3 cursor-pointer group/img flex items-center justify-center shadow-inner"
+                    title="Click to view full document"
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-contain p-2 group-hover/img:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/30 transition-colors flex items-center justify-center">
+                      <span className="opacity-0 group-hover/img:opacity-100 transition-opacity px-3 py-1.5 rounded-xl bg-black/70 backdrop-blur-md text-white text-xs font-medium border border-white/20 inline-flex items-center gap-1.5">
+                        <Eye className="w-3.5 h-3.5" />
+                        <span>View Full Document</span>
+                      </span>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Verified Links */}
+              {item.links && item.links.length > 0 && (
+                <div className="pt-3 border-t border-zinc-200/40 dark:border-white/5 space-y-2">
+                  <div className="text-[11px] font-mono uppercase tracking-wider text-zinc-400">
+                    Verified Documentation & Media:
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {item.links.map((lnk, idx) => (
+                      <a
+                        key={idx}
+                        href={lnk.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-semibold border border-amber-500/20 transition-all hover:scale-105"
+                      >
+                        <span>{lnk.label}</span>
+                        <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Core Technical Matrix */}
       <section className="space-y-6">
         <div>
@@ -286,6 +401,41 @@ export default function Home({ onToast }) {
         item={selectedProject}
         onClose={() => setSelectedProject(null)}
       />
+
+      {/* Full Image Preview Modal */}
+      {previewImage && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4"
+          onClick={() => setPreviewImage(null)}
+        >
+          <div 
+            className="relative max-w-4xl max-h-[90vh] bg-zinc-900 border border-white/20 rounded-2xl overflow-hidden shadow-2xl flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between p-4 border-b border-white/10 bg-zinc-950/80">
+              <div className="flex items-center gap-2">
+                <Trophy className="w-4 h-4 text-amber-400" />
+                <h3 className="text-sm font-semibold text-white truncate max-w-md">
+                  {previewImage.title}
+                </h3>
+              </div>
+              <button 
+                onClick={() => setPreviewImage(null)}
+                className="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 text-zinc-300 hover:text-white flex items-center justify-center transition-colors text-sm font-bold"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="p-2 overflow-auto max-h-[calc(90vh-100px)] flex items-center justify-center bg-black/40">
+              <img 
+                src={previewImage.image} 
+                alt={previewImage.title}
+                className="max-h-[75vh] w-auto object-contain rounded-lg"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
