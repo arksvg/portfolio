@@ -116,6 +116,33 @@ export default function ProjectModal({ item, onClose }) {
           </div>
         )}
 
+        {/* System Architecture Diagram (if provided) */}
+        {item.architectureImage && (
+          <div className="mt-6 space-y-2.5">
+            <div className="text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>System Architecture & Integration Topology</span>
+            </div>
+            <div className="rounded-2xl overflow-hidden border border-zinc-200 dark:border-white/10 bg-white p-2 shadow-sm">
+              <img
+                src={item.architectureImage}
+                alt={`${item.name || item.title} System Architecture`}
+                className="w-full object-contain rounded-xl"
+              />
+            </div>
+            {item.architecture && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 text-xs">
+                {Object.entries(item.architecture).map(([layer, desc]) => (
+                  <div key={layer} className="p-2.5 rounded-xl bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200/50 dark:border-white/5">
+                    <span className="font-mono font-bold uppercase text-[10px] text-indigo-500 block mb-0.5">{layer}</span>
+                    <span className="text-zinc-600 dark:text-zinc-300 leading-snug">{desc}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
         {/* Tech Stack Pills */}
         {(item.tech || item.tags) && (
           <div className="mt-6 space-y-2">
@@ -152,7 +179,7 @@ export default function ProjectModal({ item, onClose }) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-sm shadow-lg shadow-indigo-500/25 transition-all hover:scale-105"
             >
-              <span>Visit Live Website</span>
+              <span>{item.linkText || (item.sourceType === 'github' ? 'View on GitHub' : 'Visit Live Website')}</span>
               <ExternalLink className="w-4 h-4" />
             </a>
           )}

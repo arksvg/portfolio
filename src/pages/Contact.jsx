@@ -163,7 +163,7 @@ export default function Contact({ onToast }) {
 
               <div>
                 <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1.5">
-                  Subject / Project Type
+                  Subject *
                 </label>
                 <input
                   type="text"
@@ -179,7 +179,7 @@ export default function Contact({ onToast }) {
                   Message *
                 </label>
                 <textarea
-                  rows={4}
+                  rows={8}
                   required
                   value={formState.message}
                   onChange={(e) => setFormState({ ...formState, message: e.target.value })}

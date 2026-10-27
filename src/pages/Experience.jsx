@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   Briefcase, GraduationCap, Calendar, 
-  CheckCircle2, ShieldCheck 
+  CheckCircle2, ShieldCheck, ExternalLink 
 } from 'lucide-react';
 import { 
   professionalExperience, 
@@ -43,17 +43,28 @@ export default function Experience() {
               </div>
 
               <div className="p-6 md:p-8 rounded-2xl glow-border space-y-4 bg-white dark:bg-zinc-950/60 border border-zinc-200 dark:border-white/10 shadow-sm">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                  <div>
-                    <h3 className="text-xl font-bold font-heading text-zinc-900 dark:text-white">
-                      {exp.role}
-                    </h3>
-                    <div className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 mt-0.5">
-                      {exp.company} • {exp.location}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="flex items-center gap-3.5">
+                    {exp.logo && (
+                      <div className="h-11 px-3 rounded-xl bg-zinc-950 border border-zinc-800 dark:border-white/10 shrink-0 flex items-center justify-center overflow-hidden shadow-sm">
+                        <img
+                          src={exp.logo}
+                          alt={exp.company}
+                          className="h-6 w-auto object-contain"
+                        />
+                      </div>
+                    )}
+                    <div>
+                      <h3 className="text-xl font-bold font-heading text-zinc-900 dark:text-white">
+                        {exp.role}
+                      </h3>
+                      <div className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 mt-0.5">
+                        {exp.company} • {exp.location}
+                      </div>
                     </div>
                   </div>
 
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-100 dark:bg-white/5 text-zinc-600 dark:text-zinc-400 font-mono text-xs self-start sm:self-auto border border-zinc-200 dark:border-white/5">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-100 dark:bg-white/5 text-zinc-600 dark:text-zinc-400 font-mono text-xs self-start sm:self-auto border border-zinc-200 dark:border-white/5 shrink-0">
                     <Calendar className="w-3.5 h-3.5 text-indigo-500" />
                     <span>{exp.period}</span>
                   </div>
@@ -101,21 +112,32 @@ export default function Experience() {
               className="p-6 rounded-2xl glow-border space-y-3 bg-white dark:bg-zinc-950/60 border border-zinc-200 dark:border-white/10 shadow-sm"
             >
               <div className="flex items-start justify-between gap-3">
-                <div className="min-w-0 pr-2">
-                  {edu.status ? (
-                    <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[11px] font-bold border border-emerald-500/20">
-                      {edu.status}
-                    </span>
-                  ) : edu.cgpa ? (
-                    <span className="px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-600 dark:text-sky-400 text-[11px] font-bold border border-sky-500/20">
-                      CGPA: {edu.cgpa}
-                    </span>
-                  ) : null}
-                  <h3 className="text-lg font-bold font-heading text-zinc-900 dark:text-white mt-2">
-                    {edu.degree}
-                  </h3>
-                  <div className="text-xs font-semibold text-zinc-600 dark:text-zinc-400 mt-0.5">
-                    {edu.institution}
+                <div className="flex items-start gap-3.5 min-w-0 pr-2">
+                  {edu.logo && (
+                    <div className="w-12 h-12 rounded-xl bg-white p-1 shadow-sm border border-zinc-200 dark:border-white/10 shrink-0 flex items-center justify-center overflow-hidden mt-0.5">
+                      <img
+                        src={edu.logo}
+                        alt={edu.institution}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                  )}
+                  <div className="min-w-0">
+                    {edu.status ? (
+                      <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[11px] font-bold border border-emerald-500/20">
+                        {edu.status}
+                      </span>
+                    ) : edu.cgpa ? (
+                      <span className="px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-600 dark:text-sky-400 text-[11px] font-bold border border-sky-500/20">
+                        CGPA: {edu.cgpa}
+                      </span>
+                    ) : null}
+                    <h3 className="text-lg font-bold font-heading text-zinc-900 dark:text-white mt-1.5 leading-snug">
+                      {edu.degree}
+                    </h3>
+                    <div className="text-xs font-semibold text-zinc-600 dark:text-zinc-400 mt-0.5">
+                      {edu.institution}
+                    </div>
                   </div>
                 </div>
 
@@ -143,17 +165,42 @@ export default function Experience() {
             {certificationsData.map((cert, i) => (
               <div
                 key={i}
-                className="p-4 rounded-xl glow-border flex items-center justify-between gap-3 bg-white dark:bg-zinc-950/60 border border-zinc-200 dark:border-white/10 shadow-sm"
+                className="p-4 rounded-xl glow-border flex items-start justify-between gap-3 bg-white dark:bg-zinc-950/60 border border-zinc-200 dark:border-white/10 shadow-sm hover:border-indigo-500/30 transition-all"
               >
-                <div>
-                  <div className="text-xs md:text-sm font-bold text-zinc-900 dark:text-white">
-                    {cert.title}
-                  </div>
-                  <div className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 mt-0.5">
-                    {cert.issuer}
+                <div className="flex items-start gap-3.5 min-w-0 pr-2">
+                  {cert.logo && (
+                    <div className="w-10 h-10 rounded-xl bg-white p-1.5 shadow-sm border border-zinc-200 dark:border-white/10 shrink-0 flex items-center justify-center overflow-hidden mt-0.5">
+                      <img
+                        src={cert.logo}
+                        alt={cert.issuer}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                  )}
+                  <div className="min-w-0">
+                    <div className="text-xs md:text-sm font-bold text-zinc-900 dark:text-white leading-snug">
+                      {cert.title}
+                    </div>
+                    <div className="text-[11px] font-medium text-zinc-500 dark:text-zinc-400 mt-0.5">
+                      {cert.issuer}
+                    </div>
+                    {cert.link && (
+                      <div className="pt-2">
+                        <a
+                          href={cert.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 hover:underline transition-colors"
+                        >
+                          <span>Verify Certificate</span>
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
+                      </div>
+                    )}
                   </div>
                 </div>
-                <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400 font-semibold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-white/5">
+
+                <span className="font-mono text-xs text-zinc-500 dark:text-zinc-400 font-semibold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-white/5 shrink-0">
                   {cert.year}
                 </span>
               </div>
