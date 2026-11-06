@@ -2,7 +2,7 @@ import React from 'react';
 import { 
   Briefcase, GraduationCap, Calendar, 
   CheckCircle2, ShieldCheck, ExternalLink, 
-  MapPin, Award, Building2, Sparkles, Clock 
+  MapPin, Award, Building2, Clock 
 } from 'lucide-react';
 import { 
   professionalExperience, 
@@ -50,18 +50,102 @@ export default function Experience() {
               </p>
             </div>
           </div>
-
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold border border-emerald-500/20">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            <span>Live Duration Auto-Updated</span>
-          </div>
         </div>
 
         <div className="space-y-8">
           {professionalExperience.map((company) => {
+            const hasMultiplePositions = company.positions && company.positions.length > 1;
+
+            // Single Position Flat Card (No inner timeline box, e.g. Digital Falcons)
+            if (!hasMultiplePositions) {
+              const pos = company.positions[0];
+              const isPosCurrent = isCurrentPosition(pos.endDate);
+              const formattedPeriod = getFormattedPeriod(pos.startDate, pos.endDate);
+
+              return (
+                <div 
+                  key={company.id}
+                  className="p-6 md:p-8 rounded-2xl glow-border space-y-4 bg-white dark:bg-zinc-950/70 border border-zinc-200 dark:border-white/10 shadow-sm"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="flex items-center gap-4">
+                      {company.logo ? (
+                        <div className="w-13 h-13 p-2 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 shrink-0 flex items-center justify-center shadow-sm">
+                          <img
+                            src={company.logo}
+                            alt={company.company}
+                            className="max-h-9 w-auto object-contain"
+                          />
+                        </div>
+                      ) : (
+                        <div className="w-13 h-13 rounded-xl bg-indigo-500/10 text-indigo-500 border border-indigo-500/20 shrink-0 flex items-center justify-center">
+                          <Building2 className="w-6 h-6" />
+                        </div>
+                      )}
+                      <div>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <h3 className="text-xl md:text-2xl font-bold font-heading text-zinc-900 dark:text-white">
+                            {pos.role}
+                          </h3>
+                          {isPosCurrent && (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                              Present
+                            </span>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-2 text-xs md:text-sm text-zinc-500 dark:text-zinc-400 font-medium mt-1 flex-wrap">
+                          <span className="font-bold text-zinc-900 dark:text-white">
+                            {company.company}
+                          </span>
+                          <span>•</span>
+                          <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+                            {pos.employmentType}
+                          </span>
+                          <span>•</span>
+                          <span className="flex items-center gap-1">
+                            <MapPin className="w-3 h-3 text-zinc-400 inline" />
+                            {pos.location || company.location}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 font-mono text-xs border border-zinc-200 dark:border-white/5 shrink-0 self-start sm:self-auto shadow-xs">
+                      <Calendar className="w-3.5 h-3.5 text-indigo-500" />
+                      <span>{formattedPeriod}</span>
+                    </div>
+                  </div>
+
+                  {/* Highlights */}
+                  {pos.highlights && pos.highlights.length > 0 && (
+                    <ul className="space-y-1.5 text-xs md:text-sm text-zinc-600 dark:text-zinc-300 pt-1">
+                      {pos.highlights.map((h, i) => (
+                        <li key={i} className="flex items-start gap-2.5 leading-relaxed">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
+                          <span>{h}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {/* Skills Pills */}
+                  {pos.skills && pos.skills.length > 0 && (
+                    <div className="pt-1 flex flex-wrap gap-1.5">
+                      {pos.skills.map((s, i) => (
+                        <span
+                          key={i}
+                          className="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-white/5 text-[11px] md:text-xs font-mono text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-white/10 hover:border-indigo-500/40 transition-colors"
+                        >
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            // Multi-Position Grouped Timeline (e.g. NexTurn)
             const isCompanyCurrent = isCurrentPosition(company.endDate);
             const totalDuration = calculateDuration(company.startDate, company.endDate);
             const periodRange = `${formatMonthYear(company.startDate)} – ${isCompanyCurrent ? 'Present' : formatMonthYear(company.endDate)}`;
@@ -89,17 +173,9 @@ export default function Experience() {
                         </div>
                       )}
                       <div>
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className="text-xl md:text-2xl font-bold font-heading text-zinc-900 dark:text-white">
-                            {company.company}
-                          </h3>
-                          {isCompanyCurrent && (
-                            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                              Current Company
-                            </span>
-                          )}
-                        </div>
+                        <h3 className="text-xl md:text-2xl font-bold font-heading text-zinc-900 dark:text-white">
+                          {company.company}
+                        </h3>
                         <div className="flex items-center gap-2 text-xs md:text-sm text-zinc-500 dark:text-zinc-400 font-medium mt-1">
                           <MapPin className="w-3.5 h-3.5 text-zinc-400" />
                           <span>{company.location}</span>
@@ -114,15 +190,13 @@ export default function Experience() {
                   </div>
                 </div>
 
-                {/* Nested Positions Timeline (LinkedIn split style) */}
+                {/* Nested Positions Timeline */}
                 <div className="p-6 md:p-8 space-y-8 relative">
-                  {/* Subtle vertical connector line */}
-                  {company.positions.length > 1 && (
-                    <div 
-                      className="absolute left-[33px] md:left-[41px] top-10 bottom-10 w-0.5 bg-gradient-to-b from-indigo-500 via-indigo-500/40 to-transparent dark:from-indigo-400 dark:via-zinc-800 dark:to-transparent" 
-                      aria-hidden="true"
-                    />
-                  )}
+                  {/* Vertical connector line */}
+                  <div 
+                    className="absolute left-[33px] md:left-[41px] top-10 bottom-10 w-0.5 bg-gradient-to-b from-indigo-500 via-indigo-500/40 to-transparent dark:from-indigo-400 dark:via-zinc-800 dark:to-transparent" 
+                    aria-hidden="true"
+                  />
 
                   {company.positions.map((pos) => {
                     const isPosCurrent = isCurrentPosition(pos.endDate);
@@ -227,6 +301,97 @@ export default function Experience() {
 
         <div className="space-y-8">
           {academicExperience.map((org) => {
+            const hasMultiplePositions = org.positions && org.positions.length > 1;
+
+            // Single Position Flat Card (e.g. Doyaraa Trust - Editor)
+            if (!hasMultiplePositions) {
+              const pos = org.positions[0];
+              const formattedPeriod = getFormattedPeriod(pos.startDate, pos.endDate);
+
+              return (
+                <div 
+                  key={org.id}
+                  className="p-6 md:p-8 rounded-2xl glow-border space-y-4 bg-white dark:bg-zinc-950/70 border border-zinc-200 dark:border-white/10 shadow-sm"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="flex items-center gap-4">
+                      {org.logo ? (
+                        <div className="w-13 h-13 p-1.5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 shrink-0 flex items-center justify-center shadow-sm">
+                          <img
+                            src={org.logo}
+                            alt={org.organization}
+                            className="max-h-10 w-auto object-contain"
+                          />
+                        </div>
+                      ) : (
+                        <div className="w-13 h-13 rounded-xl bg-rose-500/10 text-rose-500 border border-rose-500/20 shrink-0 flex items-center justify-center">
+                          <Award className="w-6 h-6" />
+                        </div>
+                      )}
+                      <div>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <h3 className="text-xl md:text-2xl font-bold font-heading text-zinc-900 dark:text-white">
+                            {pos.role}
+                          </h3>
+                          {org.badge && (
+                            <span className="px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-semibold border border-rose-500/20">
+                              {org.badge}
+                            </span>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-2 text-xs md:text-sm text-zinc-500 dark:text-zinc-400 font-medium mt-1 flex-wrap">
+                          <span className="font-bold text-zinc-900 dark:text-white">
+                            {org.organization}
+                          </span>
+                          <span>•</span>
+                          <span className="font-semibold text-rose-600 dark:text-rose-400">
+                            {pos.employmentType || pos.domain}
+                          </span>
+                          <span>•</span>
+                          <span className="flex items-center gap-1">
+                            <MapPin className="w-3 h-3 text-zinc-400 inline" />
+                            {org.location}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 font-mono text-xs border border-zinc-200 dark:border-white/5 shrink-0 self-start sm:self-auto shadow-xs">
+                      <Calendar className="w-3.5 h-3.5 text-rose-500" />
+                      <span>{formattedPeriod}</span>
+                    </div>
+                  </div>
+
+                  {/* Highlights */}
+                  {pos.highlights && pos.highlights.length > 0 && (
+                    <ul className="space-y-1.5 text-xs md:text-sm text-zinc-600 dark:text-zinc-300 pt-1">
+                      {pos.highlights.map((h, i) => (
+                        <li key={i} className="flex items-start gap-2.5 leading-relaxed">
+                          <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
+                          <span>{h}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {/* Skills Pills */}
+                  {pos.skills && pos.skills.length > 0 && (
+                    <div className="pt-1 flex flex-wrap gap-1.5">
+                      {pos.skills.map((s, i) => (
+                        <span
+                          key={i}
+                          className="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-white/5 text-[11px] md:text-xs font-mono text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-white/10 hover:border-rose-500/40 transition-colors"
+                        >
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            // Multi-Position Grouped Timeline (e.g. Saranathan NSS)
             const isOrgCurrent = isCurrentPosition(org.endDate);
             const totalDuration = calculateDuration(org.startDate, org.endDate);
             const periodRange = `${formatMonthYear(org.startDate)} – ${isOrgCurrent ? 'Present' : formatMonthYear(org.endDate)}`;
@@ -283,12 +448,10 @@ export default function Experience() {
 
                 {/* Nested Positions Timeline */}
                 <div className="p-6 md:p-8 space-y-8 relative">
-                  {org.positions.length > 1 && (
-                    <div 
-                      className="absolute left-[33px] md:left-[41px] top-10 bottom-10 w-0.5 bg-gradient-to-b from-rose-500 via-rose-500/40 to-transparent dark:from-rose-400 dark:via-zinc-800 dark:to-transparent" 
-                      aria-hidden="true"
-                    />
-                  )}
+                  <div 
+                    className="absolute left-[33px] md:left-[41px] top-10 bottom-10 w-0.5 bg-gradient-to-b from-rose-500 via-rose-500/40 to-transparent dark:from-rose-400 dark:via-zinc-800 dark:to-transparent" 
+                    aria-hidden="true"
+                  />
 
                   {org.positions.map((pos) => {
                     const formattedPeriod = getFormattedPeriod(pos.startDate, pos.endDate);
