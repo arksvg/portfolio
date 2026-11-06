@@ -93,7 +93,16 @@ export function ProjectVisibilityProvider({ children }) {
   // Fetch global state from cloud on mount, on window focus, and periodically
   useEffect(() => {
     let isMounted = true;
-    async function syncFromCloud() {
+    let lastFetched = 0;
+
+    async function syncFromCloud(force = false) {
+      const now = Date.now();
+      // Avoid spamming if user rapidly tabs in and out (min 30s between calls unless forced)
+      if (!force && now - lastFetched < 30000) {
+        return;
+      }
+      lastFetched = now;
+
       try {
         const cloudState = await fetchGlobalUnlockState();
         if (isMounted && typeof cloudState === 'boolean') {
@@ -104,13 +113,16 @@ export function ProjectVisibilityProvider({ children }) {
       }
     }
 
-    syncFromCloud();
+    // Initial fetch on mount
+    syncFromCloud(true);
 
     const handleFocus = () => {
-      syncFromCloud();
+      syncFromCloud(false);
     };
     window.addEventListener('focus', handleFocus);
-    const interval = setInterval(syncFromCloud, 30000);
+
+    // Periodic sync every 3 minutes (180,000ms)
+    const interval = setInterval(() => syncFromCloud(true), 180000);
 
     return () => {
       isMounted = false;

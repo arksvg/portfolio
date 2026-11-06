@@ -29,7 +29,7 @@ export default function Navbar() {
               {profile.name}
             </div>
             <div className="text-[11px] text-zinc-400 font-mono -mt-0.5">
-              Fullstack Developer
+              {profile.title}
             </div>
           </div>
         </Link>

@@ -1,13 +1,15 @@
+import { getCareerExperience, getFormattedPeriod } from '../utils/dateUtils';
+
 export const profile = {
   name: "Ratnakumar A",
-  role: "Fullstack Developer (React + Java with Spring Boot)",
-  company: "Nexturn Private Limited",
-  title: "Associate Full Stack Developer L3",
+  role: "Associate Cloud Engineer III • Fullstack Developer",
+  company: "NexTurn",
+  title: "Associate Cloud Engineer III",
   location: "Tamil Nadu, India",
-  headline: "Fullstack Developer (React + Java with Spring Boot) | Associate Full Stack Developer L3 @ NexTurn",
-  experienceYears: "3+ Years",
-  summary: "Fullstack Developer with 3+ years of overall experience building scalable and high-performance web applications using React, Java and Springboot. Skilled in designing intuitive user interfaces, optimizing rendering performance, creating and integrating REST APIs for dynamic data-driven applications. Proficient in modern workflows with GitHub Actions and Agile methodologies, with a strong focus on usability, performance, and seamless user experience.",
-  bio: "Fullstack Developer with 3+ years of experience specializing in React, Java, and Spring Boot. Building scalable web architectures, AI gesture-tracking healthcare platforms, and high-performance microservices.",
+  headline: "Associate Cloud Engineer III @ NexTurn | Fullstack Developer (React + Java with Spring Boot)",
+  experienceYears: getCareerExperience('2021-01-01'),
+  summary: "Associate Cloud Engineer III with 4+ years of overall experience building scalable and high-performance web applications using React, TypeScript, Java, and Spring Boot. Skilled in architecting intuitive user interfaces, optimizing rendering performance, and developing resilient RESTful microservices. Proficient in modern cloud workflows with GitHub Actions and Agile methodologies, with an unrelenting focus on performance, scalability, and seamless user experience.",
+  bio: "Associate Cloud Engineer III and Fullstack Developer specializing in React, TypeScript, Java, and Spring Boot. Building scalable cloud web architectures, AI gesture-tracking healthcare platforms, and high-performance microservices.",
   avatar: "/assets/profile_photo.jpg",
   contact: {
     email: "arksvg@gmail.com",
@@ -24,10 +26,10 @@ export const profile = {
     instagram: "https://instagram.com/arksvg",
     whatsapp: "https://api.whatsapp.com/send/?phone=9445177941&text=Hi%21&type=phone_number&app_absent=0",
     hackerrank: "https://www.hackerrank.com/profile/arksvg",
-    resume: "https://drive.google.com/file/d/1MAPn84UAtn8vQkSbnWqnt4Gh0aubdhtM/view?usp=sharing"
+    resume: "https://drive.google.com/file/d/1GvSePupfaKQwo2jXlSbr513jlFZz2POR/view?usp=drive_link"
   },
   stats: [
-    { label: "Experience", value: "3+ Years", sub: "React & Spring Boot" },
+    { label: "Experience", value: getCareerExperience('2021-01-01'), sub: "React, Java & Cloud" },
     { label: "Academic CGPA", value: "8.98", sub: "B.Tech IT • Saranathan" },
     { label: "Hackathon Victory", value: "1st Place", sub: "UYIR State Level 2025" },
     { label: "MobAiHackathon", value: "2nd Prize", sub: "NexTurn On-the-Spot Award" }
@@ -52,32 +54,176 @@ export const profile = {
 
 export const professionalExperience = [
   {
-    id: "nexturn_l3",
-    role: "Associate Full Stack Developer L3",
-    company: "Nexturn Private Limited",
-    location: "Tamil Nadu, India",
-    period: "Jan 2024 – Present",
-    type: "Full-Time",
-    highlights: [
-      "Developed scalable and responsive UI components using ReactJS and Redux for production healthcare applications.",
-      "Improved application performance by 25% through optimized state management and lazy loading strategies.",
-      "Designed and integrated RESTful APIs using Spring Boot, handling request validation, business logic, and JSON-based data exchange; implemented MediaPipe 33-point landmark model–based gesture and pose detection to enhance user interaction.",
-      "Worked with CI/CD pipelines using GitHub Actions for build and deployment automation."
-    ],
-    skills: ["React", "Redux", "Spring Boot", "MediaPipe", "REST APIs", "GitHub Actions", "CI/CD"]
+    id: "nexturn",
+    company: "NexTurn",
+    role: "Associate Cloud Engineer III",
+    location: "Hyderabad, Telangana, India",
+    startDate: "2022-09-01",
+    endDate: null, // Present
+    logo: "/assets/logos/nexturn_logo.png",
+    positions: [
+      {
+        id: "nexturn_ace3",
+        role: "Associate Cloud Engineer III",
+        employmentType: "Full-time",
+        startDate: "2026-01-01",
+        endDate: null, // Present
+        location: "Remote",
+        isCurrent: true,
+        skills: ["React", "TypeScript", "Java", "Spring Boot", "Cloud Architecture"],
+        highlights: [
+          "Leading frontend and cloud application development, architecting high-performance React & Spring Boot solutions.",
+          "Engineering resilient cloud services, microservices APIs, and automated CI/CD deployment workflows.",
+          "Driving architecture modernization, performance tuning, and cross-functional team delivery."
+        ]
+      },
+      {
+        id: "nexturn_ace2",
+        role: "Associate Cloud Engineer II - Fullstack",
+        employmentType: "Full-time",
+        startDate: "2025-02-01",
+        endDate: "2025-12-31",
+        location: "Remote",
+        skills: ["React", "TypeScript", "Java", "Spring Boot", "REST APIs", "Microservices"],
+        highlights: [
+          "Developed scalable and responsive UI components using ReactJS and Redux for production healthcare applications.",
+          "Improved application performance by 25% through optimized state management and lazy loading strategies.",
+          "Implemented MediaPipe 33-point landmark model–based gesture and pose detection to enhance user interaction."
+        ]
+      },
+      {
+        id: "nexturn_cfsje",
+        role: "Cloud Full Stack Junior Engineer",
+        employmentType: "Full-time",
+        startDate: "2024-01-01",
+        endDate: "2025-02-01",
+        location: "Remote",
+        skills: ["React", "TypeScript", "Spring Boot", "REST APIs", "GitHub Actions"],
+        highlights: [
+          "Designed and integrated RESTful APIs using Spring Boot, handling request validation, business logic, and JSON-based data exchange.",
+          "Worked with CI/CD pipelines using GitHub Actions for build and deployment automation."
+        ]
+      },
+      {
+        id: "nexturn_intern",
+        role: "Software Engineer Intern",
+        employmentType: "Internship",
+        startDate: "2022-09-01",
+        endDate: "2023-12-31",
+        location: "Remote",
+        skills: ["Cascading Style Sheets (CSS)", "JavaScript", "Java", "Spring Boot", "REST APIs", "Performance Tuning"],
+        highlights: [
+          "Improved API response time by 20% using Java and Spring Boot through backend logic and REST API performance tuning.",
+          "Developed and tested REST APIs, including request/response handling and validation."
+        ]
+      }
+    ]
   },
   {
-    id: "nexturn_intern",
-    role: "Software Engineer Intern",
-    company: "Nexturn Private Limited",
+    id: "digital_falcons",
+    company: "Digital Falcons",
+    role: "Web Development Intern",
+    location: "Chennai, Tamil Nadu, India",
+    startDate: "2021-01-01",
+    endDate: "2021-06-30",
+    logo: "/assets/logos/digital_falcons_logo.png",
+    positions: [
+      {
+        id: "digital_falcons_intern",
+        role: "Web Development Intern",
+        employmentType: "Internship",
+        startDate: "2021-01-01",
+        endDate: "2021-06-30",
+        location: "Chennai, Tamil Nadu, India",
+        skills: ["Cascading Style Sheets (CSS)", "HTML5", "JavaScript", "Responsive Web Design"],
+        highlights: [
+          "Designed and developed responsive front-end landing pages and web components using HTML5, CSS3, and JavaScript.",
+          "Collaborated with design and digital marketing teams to enhance web performance, user engagement, and cross-browser consistency."
+        ]
+      }
+    ]
+  }
+];
+
+export const academicExperience = [
+  {
+    id: "saranathan_nss",
+    organization: "Saranathan College of Engineering",
+    subheading: "National Service Scheme (NSS Unit)",
+    badge: "Social Services",
+    logo: "/assets/logos/nss_logo.svg",
+    location: "Tiruchirappalli, Tamil Nadu, India",
+    startDate: "2019-06-01",
+    endDate: "2023-05-31",
+    positions: [
+      {
+        id: "nss_president",
+        role: "NSS President",
+        employmentType: "Social Services",
+        startDate: "2022-06-01",
+        endDate: "2023-05-31",
+        domain: "Social Services",
+        skills: ["Leadership", "Student Governance", "Community Outreach", "Event Management", "Public Relations"],
+        highlights: [
+          "Elected President of the NSS Unit at Saranathan College of Engineering, leading a team of 200+ student volunteers in institutional and community service.",
+          "Spearheaded major social impact programs including mega blood donation camps, health awareness checkups, and environmental greening projects.",
+          "Liaised between college management, Anna University coordinators, and district administrative bodies to execute community initiatives."
+        ]
+      },
+      {
+        id: "nss_office_bearer",
+        role: "NSS Office Bearer",
+        employmentType: "Social Services",
+        startDate: "2020-06-01",
+        endDate: "2022-05-31",
+        domain: "Social Services",
+        skills: ["Operations & Planning", "Youth Mobilization", "Social Services", "Blood Donation Camps", "Rural Outreach"],
+        highlights: [
+          "Managed ground operations, student volunteer teams, and logistics for district-wide social welfare programs.",
+          "Conducted digital literacy initiatives for rural school students, public health seminars, and community aid drives.",
+          "Recognized with the Best NSS Volunteer Award from Anna University for outstanding contribution and commitment to social welfare."
+        ]
+      },
+      {
+        id: "nss_volunteer",
+        role: "NSS Volunteer",
+        employmentType: "Social Services",
+        startDate: "2019-06-01",
+        endDate: "2020-05-31",
+        domain: "Social Services",
+        skills: ["Community Service", "Swachh Bharat Drives", "Social Welfare", "Environmental Awareness"],
+        highlights: [
+          "Actively participated in 7-day rural immersion camps, village cleanliness campaigns, and environmental protection projects.",
+          "Assisted in primary school educational mentorship, tree plantation drives, and health awareness campaigns across local communities."
+        ]
+      }
+    ]
+  },
+  {
+    id: "doyaraa_trust",
+    organization: "Doyaraa Trust",
+    subheading: "Social Services & Community Publications",
+    badge: "Social Services",
+    logo: "/assets/logos/doyaraa_trust.svg",
     location: "Tamil Nadu, India",
-    period: "Sep 2022 – Dec 2023",
-    type: "Internship",
-    highlights: [
-      "Improved API response time by 20% using Java and Spring Boot through optimized backend logic, request handling, and REST API performance tuning.",
-      "Developed and tested REST APIs, including request/response handling and validation."
-    ],
-    skills: ["Java", "Spring Boot", "REST APIs", "Performance Tuning", "API Validation"]
+    startDate: "2019-06-01",
+    endDate: "2023-05-31",
+    positions: [
+      {
+        id: "doyaraa_editor",
+        role: "Editor",
+        employmentType: "Social Services",
+        startDate: "2019-06-01",
+        endDate: "2023-05-31",
+        domain: "Social Services",
+        skills: ["Editorial Work", "Content Strategy", "Social Advocacy", "Publications", "Community Reporting"],
+        highlights: [
+          "Served as Editor for Doyaraa Trust over 4 years, directing content strategy, outreach materials, and social welfare bulletins.",
+          "Authored and edited articles, educational newsletters, and community reports to advocate for social welfare and youth empowerment.",
+          "Documented community impact stories, charitable initiatives, and rural assistance activities for wider social reach."
+        ]
+      }
+    ]
   }
 ];
 
@@ -90,16 +236,17 @@ export const educationData = [
     type: "Postgraduate Degree",
     status: "First Class with Distinction",
     details: "Pursuing an MBA in Project Management (2026–2027) with First Class with Distinction.",
-    link: "https://www.linkedin.com/in/arksvg/"
+    logo: "/assets/alagappa_university_logo.png"
   },
   {
     id: "edu_btech",
-    degree: "Bachelor of Technology – IT",
+    degree: "Bachelor of Technology (B.Tech) – Information Technology",
     institution: "Saranathan College of Engineering, Trichy",
     period: "2019 – 2023",
     type: "Full-Time",
     cgpa: "8.98",
-    details: "Graduated with 8.98 CGPA. Recognized as Best Outgoing Student for the 2023 batch."
+    details: "Graduated with 8.98 CGPA. Recognized as Best Outgoing Student for the 2023 batch.",
+    logo: "/assets/saranathan_college_logo.jpg"
   }
 ];
 
@@ -107,22 +254,44 @@ export const certificationsData = [
   {
     title: "Frontend Developer | React Certification",
     issuer: "HackerRank",
-    year: "2025"
+    year: "2025",
+    logo: "/assets/logos/hackerrank.png",
+    link: "https://www.hackerrank.com/certificates/70e3322497bd"
   },
   {
-    title: "Object-Oriented Programming with Java",
-    issuer: "edX",
-    year: "2024"
+    title: "Digital Skills: User Experience",
+    issuer: "Accenture",
+    year: "2024",
+    logo: "/assets/logos/accenture.svg",
+    link: "https://www.futurelearn.com/certificates/fchztli"
+  },
+  {
+    title: "Introduction to Object-Oriented Programming with Java I: Foundations and Syntax Basics",
+    issuer: "edX • GTx",
+    year: "2023",
+    logo: "/assets/logos/edx.svg",
+    link: "https://courses.edx.org/certificates/ff1cdddfe61e4eb98e4d22a4d9eecea7"
   },
   {
     title: "Springboot Certification",
     issuer: "Amigoscode",
-    year: "2023"
+    year: "2023",
+    logo: "/assets/logos/amigoscode.png",
+    link: "https://amigoscode.com/courses/267273/certificate"
   },
   {
-    title: "Java Programming Masterclass",
+    title: "The Web Developer Bootcamp 2023",
     issuer: "Udemy",
-    year: "2023"
+    year: "2023",
+    logo: "/assets/logos/udemy.svg",
+    link: "https://ude.my/UC-1fdfab50-643b-4a64-b8e7-57a3cf52d3a5"
+  },
+  {
+    title: "Java Programming Masterclass: Learn Java From Scratch",
+    issuer: "Udemy",
+    year: "2022",
+    logo: "/assets/logos/udemy.svg",
+    link: "https://www.udemy.com/certificate/UC-2fa06be5-53a8-409e-b8f9-88786fb1390c/"
   }
 ];
 
@@ -153,8 +322,12 @@ export const achievementsData = [
     organization: "Tiruchirappalli City Corporation",
     badge: "Second Runner Up",
     image: "/assets/youth_action_hackathon_2026.jpg",
-    description: "Honored as Second Runner Up at the Youth Action Hackathon organized by Tiruchirappalli City Corporation for engineering impactful civic and smart city solutions.",
+    description: "Honored as Second Runner Up at the Youth Action Hackathon organized by Tiruchirappalli City Corporation for engineering SakhiAI – an AI-driven smart women's mobility, safe route navigation, and community-powered safety reporting platform.",
     links: [
+      {
+        label: "GitHub Repository (SakhiAI)",
+        url: "https://github.com/mohamedameen21/sakihai"
+      },
       {
         label: "Facilitation Posters",
         url: "https://www.linkedin.com/in/arksvg/overlay/Honor/1044059680/treasury/?profileId=ACoAADFu4uYByXScY0dx5q6fLaZLXpT9EFp3LBE"
@@ -191,14 +364,14 @@ export const achievementsData = [
     organization: "NexTurn",
     badge: "Second Place",
     image: "/assets/mobai_hackathon_2026.jpg",
-    description: "Secured Second Place in NexTurn's internal NextHack - MobAiThon 2026 with cutting-edge AI and automation platforms (BlackSqaud & NexTBiller).",
+    description: "Secured Second Place in NexTurn's internal NextHack - MobAiThon 2026 for engineering NexTBiller (an automated SOW parsing, Zoho People attendance auto-billing, and finance approvals platform powered by Gemini AI) and BlackSqaud.",
     links: [
       {
-        label: "Second-Place BlackSqaud",
+        label: "NexTBiller Project Showcase",
         url: "https://www.linkedin.com/in/arksvg/overlay/Honor/2048700986/treasury/?profileId=ACoAADFu4uYByXScY0dx5q6fLaZLXpT9EFp3LBE"
       },
       {
-        label: "NexTBiller",
+        label: "Second-Place BlackSqaud",
         url: "https://www.linkedin.com/in/arksvg/overlay/Honor/2048700986/treasury/?profileId=ACoAADFu4uYByXScY0dx5q6fLaZLXpT9EFp3LBE"
       }
     ]
@@ -292,6 +465,37 @@ export const achievementsData = [
   }
 ];
 
+export const publicationsData = [
+  {
+    id: "infobot_ijarsct_2023",
+    title: "InfoBot - Web Based Chatbot",
+    journal: "International Journal of Advanced Research in Science, Communication and Technology (IJARSCT)",
+    publisher: "IJARSCT",
+    date: "May 26, 2023",
+    year: "2023",
+    volume: "Volume 3, Issue 8, May 2023",
+    issn: "ISSN: 2581-9429",
+    badge: "Peer-Reviewed Publication",
+    authors: [
+      "Abishek A. S.",
+      "Harshavarthan S. R.",
+      "Ratnakumar A.",
+      "Seeni Arivazhakan"
+    ],
+    guide: "Mrs. J. Sangeethapriya",
+    department: "Department of Information Technology",
+    institution: "Saranathan College of Engineering, Trichy",
+    description: "A web based chatbot is designed to interact with users via text or voice on a website. The purpose of web based chatbot is to provide a immediate assistance to users by answering frequently asked questions, providing information, and facilitating transactions. Built utilizing Sequential Algorithm from Keras and RNN (Recurrent Neural Network) based Deep Learning model to simulate human-like conversations with rapid 0.2ms response times.",
+    metrics: [
+      { label: "Query Response", value: "~0.2 ms" },
+      { label: "Loss Time", value: "~0.03 ms" },
+      { label: "Architecture", value: "RNN + Keras" }
+    ],
+    tags: ["Deep Learning", "RNN", "NLP", "Keras", "Web Chatbot", "IJARSCT", "AI Research"],
+    link: "https://ijarsct.co.in/May3i8.html"
+  }
+];
+
 export const clientProjects = [
   {
     id: "care_space",
@@ -341,6 +545,7 @@ export const clientProjects = [
     name: "Admin ERP System",
     tagline: "Modular Admin & Enterprise Resource Platform",
     category: "Production Enterprise",
+    image: "/assets/admin_erp_login.png",
     description: "An ERP system built around a modular, reusable component architecture spanning both frontend and backend.",
     problem: "The system needed authentication, authorization, and data management to be consistent and reusable across many admin modules rather than rebuilt per screen.",
     features: [
@@ -349,8 +554,8 @@ export const clientProjects = [
       "Centralized RESTful data management services handling JSON-based exchange"
     ],
     contribution: "Designed the reusable component structure and integrated the backend services powering authentication, authorization, and data management.",
-    tech: ["React", "Spring Boot", "REST APIs", "MySQL", "JPA/Hibernate"],
-    link: null,
+    tech: ["Angular", "Spring Boot", "REST APIs", "MySQL", "JPA/Hibernate"],
+    link: "https://github.com/arksvg/Admin-Module-ERP-Project",
     motif: "modules",
     glowColor: "rgba(168, 85, 247, 0.25)"
   },
@@ -497,6 +702,60 @@ export const coreProjects = [
     badge: "1st Prize Champion"
   },
   {
+    id: "sakhiai_hackathon",
+    title: "SakhiAI – Smart Women's Safety & Mobility",
+    name: "SakhiAI",
+    tagline: "Safe Streets, Confident Women · Civic Safety & Mobility Platform",
+    category: "Hackathon Winner (2nd Runner Up)",
+    badge: "Youth Action Hackathon 2026",
+    image: "/assets/sakhiai_preview.png",
+    description: "Award-winning women's safety platform built for the Youth Action Hackathon 2026 (organized by Tiruchirappalli City Corporation). Empowers women across Trichy to navigate safely via AI safe route planning, report neighborhood street hazards in real-time, and earn civic rewards.",
+    problem: "Urban transit often lacks contextual real-time safety telemetry, leaving women vulnerable to poorly lit roads, deserted stretches, and unmonitored routes without instant community verification.",
+    features: [
+      "Women-First Safety Routing: Calculates safety-optimized routes factoring in street lighting, CCTV coverage, and safe zone proximity",
+      "Community-Powered Hazard Reporting: Enables women to report real-time street safety issues, harassment zones, and infrastructure defects",
+      "Civic Gamification & Rewards: Incentivizes civic participation by rewarding users who contribute to building safer streets across Trichy",
+      "Secure Role-Based Authentication: Protected user authentication flow ensuring safety telemetry privacy and rapid SOS dispatch"
+    ],
+    contribution: "Co-engineered the responsive React web dashboard, AI safe-routing integration, interactive map views, and civic incident reporting flows.",
+    tags: ["React", "AI Safe Routing", "Civic Tech", "Hackathon Winner", "Leaflet Maps", "Tailwind CSS"],
+    tech: ["React", "AI Safe Routing", "Civic Tech", "Hackathon Winner", "Leaflet Maps", "Tailwind CSS"],
+    link: "https://github.com/mohamedameen21/sakihai",
+    sourceType: "github"
+  },
+  {
+    id: "nextbiller",
+    title: "NexTBiller – Automated SOW, Billing & Finance Approvals",
+    name: "NexTBiller",
+    tagline: "Run SOWs, billing & approvals in one place without spreadsheets.",
+    category: "Internal Hackathon (2nd Prize)",
+    badge: "MobAiThon 2026 2nd Prize",
+    image: "/assets/nextbiller_preview.png",
+    architectureImage: "/assets/nextbiller_architecture.png",
+    description: "Award-winning enterprise billing and SOW automation platform developed during NexTurn's internal NextHack - MobAiThon 2026. Automates project tracking, cross-references Zoho People attendance with hourly rates for auto-billing, parses contract SOWs, and generates auditable PDF invoices with multi-currency FX rates.",
+    problem: "Enterprise project delivery and finance teams previously relied on fragmented spreadsheets to reconcile billable hours from Zoho People against diverse SOW contracts across global currencies, creating invoicing delays and compliance audit risks.",
+    features: [
+      "Zoho People Attendance x Hourly Rate Auto-Billing: Automatically calculates billable hours and financial disbursements from real employee timesheets.",
+      "Multi-Format SOW Parser & Comparison Engine: Automatically uploads and parses SOW contracts across PDF, XLSX, and EML formats with project variance tracking.",
+      "Gemini AI (2.5 Flash-Lite) Intelligence: Server-side AI summarization and contract extraction for rapid deliverable auditing.",
+      "Automated PDF Invoicing & Frankfurter FX: Dynamic PDF generation (pdfkit) with live European Central Bank (ECB) multi-currency exchange rate caching.",
+      "Background Workers & Email Automation: Gmail IMAP inbox polling and SMTP notification pipeline for automated approval requests.",
+      "Three-Tier Microservices Architecture: React + Redux Toolkit mobile PWA frontend communicating via JWT role gating to Express/Node.js and MongoDB."
+    ],
+    architecture: {
+      client: "React + Redux Toolkit, Vite, Ant Design, Framer Motion, Mobile PWA with Service Worker",
+      server: "Express + Mongoose (Node.js), JWT role-gating, SOW parser, billing crons, PDFKit generation, FX cache (1h TTL)",
+      database: "MongoDB (Users, Projects, BillingRecords, FinanceRecords, SOWDocuments, History)",
+      integrations: "Zoho OAuth, Gemini AI 2.5 flash-lite, Gmail IMAP, SMTP, Frankfurter FX (ECB)"
+    },
+    contribution: "Co-architected the end-to-end full-stack solution, including the React + Redux Toolkit PWA client, SOW comparison engine, Express REST microservices with JWT role gating, and Gemini AI contract summarization pipelines.",
+    tags: ["React", "Redux Toolkit", "Node.js", "Express", "MongoDB", "Gemini AI", "Ant Design", "Zoho OAuth", "PWA"],
+    tech: ["React", "Redux Toolkit", "Node.js", "Express", "MongoDB", "Gemini AI", "Ant Design", "Zoho OAuth", "PWA"],
+    link: "https://www.linkedin.com/in/arksvg/overlay/Honor/2048700986/treasury/?profileId=ACoAADFu4uYByXScY0dx5q6fLaZLXpT9EFp3LBE",
+    linkText: "View Hackathon Honor & Pitch",
+    sourceType: "live"
+  },
+  {
     id: "infra_builder",
     title: "Infra Builder Tool",
     category: "Cloud Engineering",
@@ -504,16 +763,6 @@ export const coreProjects = [
     tags: ["Cloud Infra", "Automation", "DevOps", "NexTurn"],
     image: "/assets/users_cluee7fz4036qqd0171ygrjx3_WBbIDkw1yac5LeZ8-Screenshot 2024-10-04 220628.png",
     link: "https://github.com/arksvg/InfraBuilder-NT",
-    sourceType: "github"
-  },
-  {
-    id: "admin_erp_project",
-    title: "Admin Module ERP Project",
-    category: "Enterprise Software",
-    description: "Comprehensive enterprise resource planning administration dashboard with robust role-based access control and microservices.",
-    tags: ["ERP", "Admin Dashboard", "Enterprise", "RBAC"],
-    image: "/assets/users_cluee7fz4036qqd0171ygrjx3_4QbmPPMziZg0RF57-Admin.png",
-    link: "https://github.com/arksvg/Admin-Module-ERP-Project",
     sourceType: "github"
   },
   {
@@ -609,5 +858,15 @@ export const figmaProjects = [
     tags: ["Google Drive", "UX Carousels", "Visual Design", "Design Assets"],
     image: "/assets/users_cluee7fz4036qqd0171ygrjx3_tmLJLNUP9h4bhFUr-Car.jpg",
     link: "https://drive.google.com/drive/folders/10aBpFSUFhqLT1tW-cFTW7T5eG0C8rlgh?usp=sharing"
+  },
+  {
+    id: "fig_login_ui",
+    title: "Login & Authentication Screen",
+    subtitle: "Modern User Onboarding & Auth Flow",
+    category: "UI/UX Design",
+    description: "Vibrant authentication and onboarding screen design featuring organic vector shapes, hot-air balloon illustration, clean input ergonomics, and social sign-in integrations.",
+    tags: ["Figma Design", "Login UI", "Auth Flow", "Visual Design"],
+    image: "/assets/figma_login_design.png",
+    link: "https://www.figma.com/design/vofmNpuEcaO0hg2nhbnCpb/Ratnakumar-A?node-id=1-18&t=Ns8SH8cFp06DefrR-1"
   }
 ];
