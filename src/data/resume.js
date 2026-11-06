@@ -234,8 +234,8 @@ export const educationData = [
     institution: "Alagappa University",
     period: "2026 – 2027",
     type: "Postgraduate Degree",
-    status: "First Class with Distinction",
-    details: "Pursuing an MBA in Project Management (2026–2027) with First Class with Distinction.",
+    cgpa: "7.58 *",
+    details: "Pursuing an MBA in Project Management (2026–2027) with 7.58* CGPA.",
     logo: "/assets/alagappa_university_logo.png"
   },
   {

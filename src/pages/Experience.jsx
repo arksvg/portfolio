@@ -286,7 +286,7 @@ export default function Experience() {
       {/* 2. Academic Experience & Social Leadership Section */}
       <section className="space-y-6">
         <div className="flex items-center gap-2.5">
-          <div className="p-2 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20">
+          <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
             <Award className="w-5 h-5" />
           </div>
           <div>
@@ -324,7 +324,7 @@ export default function Experience() {
                           />
                         </div>
                       ) : (
-                        <div className="w-13 h-13 rounded-xl bg-rose-500/10 text-rose-500 border border-rose-500/20 shrink-0 flex items-center justify-center">
+                        <div className="w-13 h-13 rounded-xl bg-indigo-500/10 text-indigo-500 border border-indigo-500/20 shrink-0 flex items-center justify-center">
                           <Award className="w-6 h-6" />
                         </div>
                       )}
@@ -334,7 +334,7 @@ export default function Experience() {
                             {pos.role}
                           </h3>
                           {org.badge && (
-                            <span className="px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-semibold border border-rose-500/20">
+                            <span className="px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-semibold border border-indigo-500/20">
                               {org.badge}
                             </span>
                           )}
@@ -344,7 +344,7 @@ export default function Experience() {
                             {org.organization}
                           </span>
                           <span>•</span>
-                          <span className="font-semibold text-rose-600 dark:text-rose-400">
+                          <span className="font-semibold text-indigo-600 dark:text-indigo-400">
                             {pos.employmentType || pos.domain}
                           </span>
                           <span>•</span>
@@ -357,7 +357,7 @@ export default function Experience() {
                     </div>
 
                     <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 font-mono text-xs border border-zinc-200 dark:border-white/5 shrink-0 self-start sm:self-auto shadow-xs">
-                      <Calendar className="w-3.5 h-3.5 text-rose-500" />
+                      <Calendar className="w-3.5 h-3.5 text-indigo-500" />
                       <span>{formattedPeriod}</span>
                     </div>
                   </div>
@@ -380,7 +380,7 @@ export default function Experience() {
                       {pos.skills.map((s, i) => (
                         <span
                           key={i}
-                          className="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-white/5 text-[11px] md:text-xs font-mono text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-white/10 hover:border-rose-500/40 transition-colors"
+                          className="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-white/5 text-[11px] md:text-xs font-mono text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-white/10 hover:border-indigo-500/40 transition-colors"
                         >
                           {s}
                         </span>
@@ -414,7 +414,7 @@ export default function Experience() {
                           />
                         </div>
                       ) : (
-                        <div className="w-13 h-13 rounded-xl bg-rose-500/10 text-rose-500 border border-rose-500/20 shrink-0 flex items-center justify-center">
+                        <div className="w-13 h-13 rounded-xl bg-indigo-500/10 text-indigo-500 border border-indigo-500/20 shrink-0 flex items-center justify-center">
                           <Award className="w-6 h-6" />
                         </div>
                       )}
@@ -424,7 +424,7 @@ export default function Experience() {
                             {org.organization}
                           </h3>
                           {org.badge && (
-                            <span className="px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400 text-xs font-semibold border border-rose-500/20">
+                            <span className="px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-semibold border border-indigo-500/20">
                               {org.badge}
                             </span>
                           )}
@@ -440,8 +440,8 @@ export default function Experience() {
                     </div>
 
                     <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white dark:bg-white/5 text-zinc-700 dark:text-zinc-300 font-mono text-xs border border-zinc-200 dark:border-white/10 shrink-0 shadow-xs">
-                      <Clock className="w-3.5 h-3.5 text-rose-500" />
-                      <span>{periodRange} · <strong className="text-rose-600 dark:text-rose-400">{totalDuration}</strong></span>
+                      <Clock className="w-3.5 h-3.5 text-indigo-500" />
+                      <span>{periodRange} · <strong className="text-indigo-600 dark:text-indigo-400">{totalDuration}</strong></span>
                     </div>
                   </div>
                 </div>
@@ -449,7 +449,7 @@ export default function Experience() {
                 {/* Nested Positions Timeline */}
                 <div className="p-6 md:p-8 space-y-8 relative">
                   <div 
-                    className="absolute left-[33px] md:left-[41px] top-10 bottom-10 w-0.5 bg-gradient-to-b from-rose-500 via-rose-500/40 to-transparent dark:from-rose-400 dark:via-zinc-800 dark:to-transparent" 
+                    className="absolute left-[33px] md:left-[41px] top-10 bottom-10 w-0.5 bg-gradient-to-b from-indigo-500 via-indigo-500/40 to-transparent dark:from-indigo-400 dark:via-zinc-800 dark:to-transparent" 
                     aria-hidden="true"
                   />
 
@@ -460,8 +460,8 @@ export default function Experience() {
                       <div key={pos.id} className="relative flex items-start gap-4 md:gap-6 group">
                         {/* Timeline Node Dot */}
                         <div className="relative shrink-0 mt-1">
-                          <div className="w-5 h-5 rounded-full bg-white dark:bg-zinc-900 border-2 border-zinc-300 dark:border-zinc-700 group-hover:border-rose-500 transition-colors flex items-center justify-center">
-                            <span className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-500 group-hover:bg-rose-500 transition-colors"></span>
+                          <div className="w-5 h-5 rounded-full bg-white dark:bg-zinc-900 border-2 border-zinc-300 dark:border-zinc-700 group-hover:border-indigo-500 transition-colors flex items-center justify-center">
+                            <span className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-500 group-hover:bg-indigo-500 transition-colors"></span>
                           </div>
                         </div>
 
@@ -473,14 +473,14 @@ export default function Experience() {
                                 {pos.role}
                               </h4>
                               <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400 font-medium mt-0.5">
-                                <span className="font-semibold text-rose-600 dark:text-rose-400">
+                                <span className="font-semibold text-indigo-600 dark:text-indigo-400">
                                   {pos.employmentType || pos.domain}
                                 </span>
                               </div>
                             </div>
 
                             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 font-mono text-xs border border-zinc-200 dark:border-white/5 shrink-0 self-start sm:self-auto">
-                              <Calendar className="w-3.5 h-3.5 text-rose-500" />
+                              <Calendar className="w-3.5 h-3.5 text-indigo-500" />
                               <span>{formattedPeriod}</span>
                             </div>
                           </div>
@@ -503,7 +503,7 @@ export default function Experience() {
                               {pos.skills.map((s, i) => (
                                 <span
                                   key={i}
-                                  className="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-white/5 text-[11px] md:text-xs font-mono text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-white/10 hover:border-rose-500/40 transition-colors"
+                                  className="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-white/5 text-[11px] md:text-xs font-mono text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-white/10 hover:border-indigo-500/40 transition-colors"
                                 >
                                   {s}
                                 </span>
@@ -550,13 +550,13 @@ export default function Experience() {
                       </div>
                     )}
                     <div className="min-w-0">
-                      {edu.status ? (
-                        <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[11px] font-bold border border-emerald-500/20">
-                          {edu.status}
-                        </span>
-                      ) : edu.cgpa ? (
+                      {edu.cgpa ? (
                         <span className="px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-600 dark:text-sky-400 text-[11px] font-bold border border-sky-500/20">
                           CGPA: {edu.cgpa}
+                        </span>
+                      ) : edu.status ? (
+                        <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[11px] font-bold border border-emerald-500/20">
+                          {edu.status}
                         </span>
                       ) : null}
                       <h3 className="text-lg font-bold font-heading text-zinc-900 dark:text-white mt-1.5 leading-snug">
