@@ -2,11 +2,10 @@ import React from 'react';
 import { 
   Briefcase, GraduationCap, Calendar, 
   CheckCircle2, ShieldCheck, ExternalLink, 
-  MapPin, Award, Building2, Clock 
+  MapPin, Building2, Clock 
 } from 'lucide-react';
 import { 
   professionalExperience, 
-  academicExperience, 
   educationData, 
   certificationsData 
 } from '../data/resume';
@@ -27,10 +26,10 @@ export default function Experience() {
           <span>Career Journey & Leadership</span>
         </div>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-zinc-900 dark:text-white tracking-tight">
-          Work & Academic Experience
+          Work Experience
         </h1>
         <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 max-w-2xl leading-relaxed">
-          Cloud engineering progression at NexTurn, academic leadership with the National Service Scheme (NSS), education, and verified industry credentials.
+          Cloud engineering progression at NexTurn, education, and verified industry credentials.
         </p>
       </div>
 
@@ -398,244 +397,6 @@ export default function Experience() {
           </div>
         </section>
       </div>
-
-      {/* 3. Academic Experience & Social Leadership Section */}
-      <section className="space-y-6">
-        <div className="flex items-center gap-2.5">
-          <div className="p-2 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
-            <Award className="w-5 h-5" />
-          </div>
-          <div>
-            <h2 className="text-2xl font-bold font-heading text-zinc-900 dark:text-white">
-              Academic Experience & Social Services
-            </h2>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400">
-              National Service Scheme (NSS) collegiate leadership and community trust editorial tenures
-            </p>
-          </div>
-        </div>
-
-        <div className="space-y-8">
-          {academicExperience.map((org) => {
-            const hasMultiplePositions = org.positions && org.positions.length > 1;
-
-            // Single Position Flat Card (e.g. Doyaraa Trust - Editor)
-            if (!hasMultiplePositions) {
-              const pos = org.positions[0];
-              const formattedPeriod = getFormattedPeriod(pos.startDate, pos.endDate);
-
-              return (
-                <div 
-                  key={org.id}
-                  className="p-6 md:p-8 rounded-2xl glow-border space-y-4 bg-white dark:bg-zinc-950/70 border border-zinc-200 dark:border-white/10 shadow-sm"
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div className="flex items-center gap-4">
-                      {org.logo ? (
-                        <div className="w-13 h-13 p-1.5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 shrink-0 flex items-center justify-center shadow-sm">
-                          <img
-                            src={org.logo}
-                            alt={org.organization}
-                            className="max-h-10 w-auto object-contain"
-                          />
-                        </div>
-                      ) : (
-                        <div className="w-13 h-13 rounded-xl bg-indigo-500/10 text-indigo-500 border border-indigo-500/20 shrink-0 flex items-center justify-center">
-                          <Award className="w-6 h-6" />
-                        </div>
-                      )}
-                      <div>
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className="text-xl md:text-2xl font-bold font-heading text-zinc-900 dark:text-white">
-                            {pos.role}
-                          </h3>
-                          {org.badge && (
-                            <span className="px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-semibold border border-indigo-500/20">
-                              {org.badge}
-                            </span>
-                          )}
-                        </div>
-                        <div className="flex items-center gap-2 text-xs md:text-sm text-zinc-500 dark:text-zinc-400 font-medium mt-1 flex-wrap">
-                          <span className="font-bold text-zinc-900 dark:text-white">
-                            {org.organization}
-                          </span>
-                          <span>•</span>
-                          <span className="font-semibold text-indigo-600 dark:text-indigo-400">
-                            {pos.employmentType || pos.domain}
-                          </span>
-                          <span>•</span>
-                          <span className="flex items-center gap-1">
-                            <MapPin className="w-3 h-3 text-zinc-400 inline" />
-                            {org.location}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 font-mono text-xs border border-zinc-200 dark:border-white/10 shrink-0 self-start sm:self-auto shadow-xs">
-                      <Calendar className="w-3.5 h-3.5 text-indigo-500" />
-                      <span>{formattedPeriod}</span>
-                    </div>
-                  </div>
-
-                  {/* Highlights */}
-                  {pos.highlights && pos.highlights.length > 0 && (
-                    <ul className="space-y-1.5 text-xs md:text-sm text-zinc-600 dark:text-zinc-300 pt-1">
-                      {pos.highlights.map((h, i) => (
-                        <li key={i} className="flex items-start gap-2.5 leading-relaxed">
-                          <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
-                          <span>{h}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-
-                  {/* Skills Pills */}
-                  {pos.skills && pos.skills.length > 0 && (
-                    <div className="pt-1 flex flex-wrap gap-1.5">
-                      {pos.skills.map((s, i) => (
-                        <span
-                          key={i}
-                          className="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-white/5 text-[11px] md:text-xs font-mono text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-white/10 hover:border-indigo-500/40 transition-colors"
-                        >
-                          {s}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              );
-            }
-
-            // Multi-Position Grouped Timeline (e.g. Saranathan NSS)
-            const isOrgCurrent = isCurrentPosition(org.endDate);
-            const totalDuration = calculateDuration(org.startDate, org.endDate);
-            const periodRange = `${formatMonthYear(org.startDate)} – ${isOrgCurrent ? 'Present' : formatMonthYear(org.endDate)}`;
-
-            return (
-              <div 
-                key={org.id}
-                className="rounded-2xl glow-border bg-white dark:bg-zinc-950/70 border border-zinc-200 dark:border-white/10 shadow-sm overflow-hidden"
-              >
-                {/* Organization Header */}
-                <div className="p-6 md:p-7 border-b border-zinc-100 dark:border-white/5 bg-zinc-50/50 dark:bg-white/[0.02]">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div className="flex items-center gap-4">
-                      {org.logo ? (
-                        <div className="w-13 h-13 p-1.5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 shrink-0 flex items-center justify-center shadow-sm">
-                          <img
-                            src={org.logo}
-                            alt={org.organization}
-                            className="max-h-10 w-auto object-contain"
-                          />
-                        </div>
-                      ) : (
-                        <div className="w-13 h-13 rounded-xl bg-indigo-500/10 text-indigo-500 border border-indigo-500/20 shrink-0 flex items-center justify-center">
-                          <Award className="w-6 h-6" />
-                        </div>
-                      )}
-                      <div>
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className="text-xl md:text-2xl font-bold font-heading text-zinc-900 dark:text-white">
-                            {org.organization}
-                          </h3>
-                          {org.badge && (
-                            <span className="px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-semibold border border-indigo-500/20">
-                              {org.badge}
-                            </span>
-                          )}
-                        </div>
-                        <div className="text-xs md:text-sm text-indigo-600 dark:text-indigo-400 font-semibold mt-0.5">
-                          {org.subheading}
-                        </div>
-                        <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400 font-medium mt-1">
-                          <MapPin className="w-3.5 h-3.5 text-zinc-400" />
-                          <span>{org.location}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white dark:bg-white/5 text-zinc-700 dark:text-zinc-300 font-mono text-xs border border-zinc-200 dark:border-white/10 shrink-0 shadow-xs">
-                      <Clock className="w-3.5 h-3.5 text-indigo-500" />
-                      <span>{periodRange} · <strong className="text-indigo-600 dark:text-indigo-400">{totalDuration}</strong></span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Nested Positions Timeline */}
-                <div className="p-6 md:p-8 space-y-8 relative">
-                  <div 
-                    className="absolute left-[33px] md:left-[41px] top-10 bottom-10 w-0.5 bg-gradient-to-b from-indigo-500 via-indigo-500/40 to-transparent dark:from-indigo-400 dark:via-zinc-800 dark:to-transparent" 
-                    aria-hidden="true"
-                  />
-
-                  {org.positions.map((pos) => {
-                    const formattedPeriod = getFormattedPeriod(pos.startDate, pos.endDate);
-
-                    return (
-                      <div key={pos.id} className="relative flex items-start gap-4 md:gap-6 group">
-                        {/* Timeline Node Dot */}
-                        <div className="relative shrink-0 mt-1">
-                          <div className="w-5 h-5 rounded-full bg-white dark:bg-zinc-900 border-2 border-zinc-300 dark:border-zinc-700 group-hover:border-indigo-500 transition-colors flex items-center justify-center">
-                            <span className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-500 group-hover:bg-indigo-500 transition-colors"></span>
-                          </div>
-                        </div>
-
-                        {/* Position Details */}
-                        <div className="flex-1 space-y-3 min-w-0">
-                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                            <div>
-                              <h4 className="text-lg md:text-xl font-bold font-heading text-zinc-900 dark:text-white">
-                                {pos.role}
-                              </h4>
-                              <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400 font-medium mt-0.5">
-                                <span className="font-semibold text-indigo-600 dark:text-indigo-400">
-                                  {pos.employmentType || pos.domain}
-                                </span>
-                              </div>
-                            </div>
-
-                            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 font-mono text-xs border border-zinc-200 dark:border-white/5 shrink-0 self-start sm:self-auto">
-                              <Calendar className="w-3.5 h-3.5 text-indigo-500" />
-                              <span>{formattedPeriod}</span>
-                            </div>
-                          </div>
-
-                          {/* Highlights */}
-                          {pos.highlights && pos.highlights.length > 0 && (
-                            <ul className="space-y-1.5 text-xs md:text-sm text-zinc-600 dark:text-zinc-300 pt-1">
-                              {pos.highlights.map((h, i) => (
-                                <li key={i} className="flex items-start gap-2.5 leading-relaxed">
-                                  <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
-                                  <span>{h}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-
-                          {/* Skills Pills */}
-                          {pos.skills && pos.skills.length > 0 && (
-                            <div className="pt-1 flex flex-wrap gap-1.5">
-                              {pos.skills.map((s, i) => (
-                                <span
-                                  key={i}
-                                  className="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-white/5 text-[11px] md:text-xs font-mono text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-white/10 hover:border-indigo-500/40 transition-colors"
-                                >
-                                  {s}
-                                </span>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
     </div>
   );
 }
