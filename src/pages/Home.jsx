@@ -56,45 +56,68 @@ export default function Home({ onToast }) {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-14">
           {/* Left Content */}
           <div className="flex-1 space-y-6 text-center lg:text-left order-1">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.05] border border-white/10 backdrop-blur-md text-xs text-zinc-300 font-medium">
-              <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 text-indigo-500 dark:text-indigo-400 text-xs font-semibold border border-indigo-500/20">
+              <Code2 className="w-3.5 h-3.5" />
               <span>{profile.title} @ {profile.company}</span>
-              <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.85)] ml-0.5" />
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.4rem] font-extrabold font-heading text-white tracking-tight leading-[1.14]">
-              Fullstack Developer <br className="hidden sm:inline" />
-              Building{' '}
-              <span className="bg-gradient-to-r from-cyan-400 via-sky-400 to-blue-500 bg-clip-text text-transparent">
-                Scalable Web
-              </span> <br className="hidden sm:inline" />
-              <span className="bg-gradient-to-r from-purple-400 via-fuchsia-400 to-indigo-400 bg-clip-text text-transparent">
-                Systems
-              </span>{' '}
-              & Intuitive UIs
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-zinc-900 dark:text-white tracking-tight leading-[1.2]">
+              Fullstack Developer Building <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">Scalable Web Systems</span> & Intuitive UIs
             </h1>
 
-            <p className="text-sm sm:text-base text-zinc-400 leading-relaxed max-w-xl mx-auto lg:mx-0">
-              Associate Cloud Engineer III and Fullstack Developer specializing in React, TypeScript, Java, and Spring Boot. Building scalable cloud web architectures, AI gesture-tracking healthcare platforms, and high-performance applications.
+            <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              {profile.bio}
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-2">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
               <Link
                 to="/projects"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white font-medium text-sm shadow-[0_0_25px_rgba(59,130,246,0.35)] transition-all hover:scale-105"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm shadow-lg shadow-indigo-500/25 transition-all hover:scale-105"
               >
-                <span>🚀 View My Work</span>
+                <span>Explore Projects</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
 
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-zinc-900/80 hover:bg-white/10 text-white font-medium text-sm border border-white/15 backdrop-blur-md transition-all hover:scale-105"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-zinc-100 dark:bg-white/5 hover:bg-zinc-200 dark:hover:bg-white/10 text-zinc-800 dark:text-zinc-200 font-semibold text-sm border border-zinc-200/50 dark:border-white/10 transition-colors"
               >
-                <Mail className="w-4 h-4 text-zinc-300" />
                 <span>Get In Touch</span>
               </Link>
+
+              <a
+                href={profile.socials.resume}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-zinc-100 dark:bg-white/5 hover:bg-zinc-200 dark:hover:bg-white/10 text-zinc-800 dark:text-zinc-200 font-semibold text-sm border border-zinc-200/50 dark:border-white/10 transition-colors"
+              >
+                <Download className="w-4 h-4 text-indigo-500" />
+                <span>Resume</span>
+              </a>
+            </div>
+
+            {/* Quick Contact Chips */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-4 text-xs">
+              <button
+                onClick={() => handleCopy(profile.contact.email, 'email')}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/5 hover:bg-indigo-500/10 text-zinc-600 dark:text-zinc-400 border border-zinc-200/40 dark:border-white/10 transition-colors"
+                title="Copy Email"
+              >
+                <Mail className="w-3.5 h-3.5 text-red-400" />
+                <span>{profile.contact.email}</span>
+                {copiedEmail ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+              </button>
+
+              <button
+                onClick={() => handleCopy(profile.contact.phone, 'phone')}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/5 hover:bg-indigo-500/10 text-zinc-600 dark:text-zinc-400 border border-zinc-200/40 dark:border-white/10 transition-colors"
+                title="Copy Phone"
+              >
+                <Phone className="w-3.5 h-3.5 text-emerald-400" />
+                <span>{profile.contact.phone}</span>
+                {copiedPhone ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+              </button>
             </div>
           </div>
 
