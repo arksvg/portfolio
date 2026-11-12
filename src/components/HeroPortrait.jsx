@@ -3,105 +3,71 @@ import { profile } from '../data/resume';
 
 export default function HeroPortrait() {
   return (
-    <div className="relative w-full max-w-[340px] sm:max-w-[400px] md:max-w-[430px] lg:max-w-[480px] aspect-[4/5] flex items-center justify-center select-none mx-auto shrink-0 py-4">
+    <div className="relative w-full max-w-[360px] sm:max-w-[430px] lg:max-w-[500px] aspect-[4/5] flex items-center justify-center select-none mx-auto shrink-0 py-2">
       {/* ============================================================== */}
-      {/* 1. ATMOSPHERIC NEON LIGHTING (Central Violet / Magenta Auras)   */}
+      {/* 1. ATMOSPHERIC AMBIENT GLOW                                    */}
       {/* ============================================================== */}
       <div 
         aria-hidden="true"
         className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
       >
-        {/* Core vibrant neon purple/magenta spotlight directly behind head */}
-        <div className="w-[68%] h-[68%] rounded-full bg-gradient-to-tr from-purple-600 via-fuchsia-500 to-indigo-500 opacity-80 blur-[55px] sm:blur-[70px] animate-pulse-glow" />
-
-        {/* Secondary wider ambient aura extending outward */}
-        <div className="absolute w-[85%] h-[85%] rounded-full bg-gradient-to-br from-indigo-600/50 via-purple-700/40 to-pink-600/30 opacity-60 blur-[80px] sm:blur-[100px]" />
+        <div className="w-[85%] h-[85%] rounded-full bg-gradient-to-br from-blue-600/35 via-indigo-600/30 to-purple-700/25 blur-[85px] animate-pulse-glow" />
       </div>
 
       {/* ============================================================== */}
-      {/* 2. FLOATING TRANSLUCENT GLASS PLATES (Layered Behind Subject)  */}
+      {/* 2. SLEEK DIAGONAL GLOW CAPSULES (Matching screenshot)          */}
       {/* ============================================================== */}
       <div 
         aria-hidden="true" 
         className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
       >
-        {/* Main large tilted frosted glass card (tilted clockwise ~8°) */}
+        {/* Main prominent royal blue diagonal capsule */}
         <div 
-          className="absolute w-[76%] h-[82%] rounded-[2.5rem] sm:rounded-[3rem] backdrop-blur-xl bg-gradient-to-br from-white/15 via-purple-500/10 to-indigo-600/15 border border-white/25 dark:border-white/20 shadow-[0_8px_32px_0_rgba(124,58,237,0.35)] animate-float-slow"
-          style={{ transformOrigin: 'center center' }}
+          className="absolute w-44 sm:w-56 h-[390px] sm:h-[490px] rounded-full bg-gradient-to-b from-blue-600/50 via-indigo-600/35 to-transparent border border-blue-400/20 shadow-[0_0_60px_rgba(37,99,235,0.25)]"
+          style={{ transform: 'rotate(-35deg)' }}
         />
 
-        {/* Intersecting secondary glass card (tilted counter-clockwise ~-10°) */}
+        {/* Secondary overlapping violet capsule */}
         <div 
-          className="absolute w-[74%] h-[80%] rounded-[2.2rem] sm:rounded-[2.8rem] backdrop-blur-lg bg-gradient-to-tr from-purple-900/25 via-white/5 to-indigo-900/25 border border-purple-400/25 dark:border-purple-300/20 shadow-[0_4px_24px_rgba(0,0,0,0.3)] animate-float-reverse"
-          style={{ transformOrigin: 'center center' }}
-        />
-      </div>
-
-      {/* ============================================================== */}
-      {/* 3. LUMINOUS ORBITAL RINGS & COSMIC PATHS                        */}
-      {/* ============================================================== */}
-      <div 
-        aria-hidden="true" 
-        className="absolute inset-0 flex items-center justify-center pointer-events-none z-10"
-      >
-        {/* Primary glowing orbital ellipse wrapping around */}
-        <div 
-          className="absolute w-[104%] h-[56%] rounded-[50%] border border-purple-400/45 shadow-[0_0_18px_rgba(192,132,252,0.45)]"
-          style={{ transform: 'rotate(24deg)' }}
-        />
-
-        {/* Secondary counter-angled orbital ring */}
-        <div 
-          className="absolute w-[100%] h-[50%] rounded-[50%] border border-indigo-400/40 shadow-[0_0_14px_rgba(129,140,248,0.35)]"
-          style={{ transform: 'rotate(-28deg)' }}
+          className="absolute w-36 sm:w-44 h-[320px] sm:h-[410px] rounded-full bg-gradient-to-b from-indigo-700/30 via-purple-700/20 to-transparent border border-purple-500/15"
+          style={{ transform: 'rotate(-35deg) translate(-25px, 20px)' }}
         />
       </div>
 
       {/* ============================================================== */}
-      {/* 4. FLOATING 3D GLOSSY SPHERES & GLASS CHIPS                     */}
+      {/* 3. FLOATING GLASS WIDGET CARDS                                  */}
       {/* ============================================================== */}
-      <div 
-        aria-hidden="true" 
-        className="absolute inset-0 pointer-events-none z-10"
-      >
-        {/* Top-Left Floating Glass Chip */}
+      <div aria-hidden="true" className="absolute inset-0 pointer-events-none z-20">
+        {/* Top-Left: Code Badge </> */}
         <div 
-          className="absolute top-[8%] left-[2%] sm:left-[4%] w-10 h-12 sm:w-14 sm:h-16 rounded-2xl backdrop-blur-md bg-white/15 border border-white/35 shadow-[0_8px_24px_rgba(0,0,0,0.3)] animate-float-chip-1"
-          style={{ transform: 'rotate(18deg)' }}
-        />
+          className="absolute top-[18%] left-[2%] sm:left-[-10px] w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#0d1226]/85 border border-white/15 backdrop-blur-xl shadow-2xl flex items-center justify-center animate-float-slow"
+          style={{ transform: 'rotate(-8deg)' }}
+        >
+          <span className="font-mono font-bold text-lg sm:text-xl text-indigo-400">&lt;/&gt;</span>
+        </div>
 
-        {/* Bottom-Right Floating Glass Chip */}
+        {/* Bottom-Right: Cyan Bar Chart Badge */}
         <div 
-          className="absolute bottom-[6%] right-[2%] sm:right-[4%] w-12 h-10 sm:w-16 sm:h-14 rounded-2xl backdrop-blur-md bg-white/15 border border-purple-400/35 shadow-[0_8px_24px_rgba(0,0,0,0.3)] animate-float-chip-2"
-          style={{ transform: 'rotate(-14deg)' }}
-        />
-
-        {/* 3D Glossy Magenta Sphere (Right Edge) */}
-        <div 
-          className="absolute top-[34%] right-[1%] sm:right-[2%] w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[radial-gradient(circle_at_35%_35%,_#ffa6f2,_#c026d3_65%,_#581c87_100%)] shadow-[0_0_16px_rgba(244,114,182,0.8)] animate-float-orb"
-        />
-
-        {/* 3D Glossy Violet Sphere (Left Edge) */}
-        <div 
-          className="absolute top-[38%] left-[1%] sm:left-[2%] w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[radial-gradient(circle_at_35%_35%,_#c084fc,_#7c3aed_65%,_#3b0764_100%)] shadow-[0_0_14px_rgba(168,85,247,0.7)] animate-float-orb-reverse"
-        />
-
-        {/* Subtle luminous accent particles */}
-        <span className="absolute top-[22%] right-[16%] w-1.5 h-1.5 rounded-full bg-fuchsia-400/80 shadow-[0_0_8px_rgba(232,121,249,0.9)] animate-ping" />
-        <span className="absolute bottom-[28%] left-[12%] w-1.5 h-1.5 rounded-full bg-indigo-400/80 shadow-[0_0_8px_rgba(129,140,248,0.9)]" />
+          className="absolute bottom-[22%] right-[2%] sm:right-[-10px] w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#0d1226]/85 border border-white/15 backdrop-blur-xl shadow-2xl flex items-center justify-center animate-float-reverse"
+          style={{ transform: 'rotate(8deg)' }}
+        >
+          <div className="flex items-end gap-1 px-1">
+            <span className="w-1.5 h-3 bg-cyan-400 rounded-full shadow-[0_0_8px_rgba(34,211,238,0.6)]" />
+            <span className="w-1.5 h-5 bg-cyan-400 rounded-full shadow-[0_0_8px_rgba(34,211,238,0.6)]" />
+            <span className="w-1.5 h-4 bg-cyan-400 rounded-full shadow-[0_0_8px_rgba(34,211,238,0.6)]" />
+          </div>
+        </div>
       </div>
 
       {/* ============================================================== */}
-      {/* 5. HERO PORTRAIT CUTOUT (Subject with Transparent Background)  */}
+      {/* 4. HERO PORTRAIT CUTOUT (No Background Subject)                */}
       {/* ============================================================== */}
-      <div className="relative z-20 w-[84%] sm:w-[86%] h-auto max-h-[96%] flex items-end justify-center pointer-events-auto">
+      <div className="relative z-10 w-[88%] sm:w-[90%] h-auto max-h-[96%] flex items-end justify-center pointer-events-auto">
         <img
           src="/assets/profile_photo_nobg.png"
           alt={profile.name}
-          className="w-full h-auto object-contain object-bottom drop-shadow-[0_16px_32px_rgba(124,58,237,0.4)] transition-transform duration-500 ease-out hover:scale-[1.02]"
+          className="w-full h-auto object-contain max-h-[450px] sm:max-h-[520px] drop-shadow-[0_25px_50px_rgba(0,0,0,0.85)]"
           loading="eager"
-          decoding="async"
         />
       </div>
     </div>
