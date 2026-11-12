@@ -1,4 +1,4 @@
-import { getCareerExperience, getFormattedPeriod } from '../utils/dateUtils';
+import { getFormattedPeriod } from '../utils/dateUtils';
 
 export const profile = {
   name: "Ratnakumar A",
@@ -7,8 +7,8 @@ export const profile = {
   title: "Associate Cloud Engineer III",
   location: "Tamil Nadu, India",
   headline: "Associate Cloud Engineer III @ NexTurn | Fullstack Developer (React + Java with Spring Boot)",
-  experienceYears: getCareerExperience('2021-01-01'),
-  summary: "Associate Cloud Engineer III with 4+ years of overall experience building scalable and high-performance web applications using React, TypeScript, Java, and Spring Boot. Skilled in architecting intuitive user interfaces, optimizing rendering performance, and developing resilient RESTful microservices. Proficient in modern cloud workflows with GitHub Actions and Agile methodologies, with an unrelenting focus on performance, scalability, and seamless user experience.",
+  experienceYears: "3+ Years",
+  summary: "Associate Cloud Engineer III with 3+ years of overall experience building scalable and high-performance web applications using React, TypeScript, Java, and Spring Boot. Skilled in architecting intuitive user interfaces, optimizing rendering performance, and developing resilient RESTful microservices. Proficient in modern cloud workflows with GitHub Actions and Agile methodologies, with an unrelenting focus on performance, scalability, and seamless user experience.",
   bio: "Associate Cloud Engineer III and Fullstack Developer specializing in React, TypeScript, Java, and Spring Boot. Building scalable cloud web architectures, AI gesture-tracking healthcare platforms, and high-performance microservices.",
   avatar: "/assets/profile_photo.jpg",
   contact: {
@@ -29,7 +29,7 @@ export const profile = {
     resume: "https://drive.google.com/file/d/1GvSePupfaKQwo2jXlSbr513jlFZz2POR/view?usp=drive_link"
   },
   stats: [
-    { label: "Experience", value: getCareerExperience('2021-01-01'), sub: "React, Java & Cloud" },
+    { label: "Experience", value: "3+ Years", sub: "React, Java & Cloud" },
     { label: "Academic CGPA", value: "8.98", sub: "B.Tech IT • Saranathan" },
     { label: "Hackathon Victory", value: "1st Place", sub: "UYIR State Level 2025" },
     { label: "MobAiHackathon", value: "2nd Prize", sub: "NexTurn On-the-Spot Award" }

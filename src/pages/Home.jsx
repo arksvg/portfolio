@@ -145,6 +145,85 @@ export default function Home({ onToast }) {
         ))}
       </section>
 
+      {/* Core Technical Matrix */}
+      <section className="space-y-6">
+        <div>
+          <div className="text-xs font-bold uppercase tracking-wider text-indigo-500 dark:text-indigo-400 flex items-center gap-1.5">
+            <Code2 className="w-3.5 h-3.5" />
+            <span>Technical Expertise</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-bold font-heading text-zinc-900 dark:text-white mt-1">
+            Skills & Engineering Tooling
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="p-6 rounded-2xl glass glow-border space-y-3">
+            <div className="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center">
+              <Globe className="w-5 h-5" />
+            </div>
+            <h3 className="font-heading font-bold text-base text-zinc-900 dark:text-white">
+              Frontend & UI
+            </h3>
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              {(profile.skills?.frontend || profile.technicalSkills?.frontend || []).map((s, i) => (
+                <span key={i} className="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-white/5 text-xs text-zinc-700 dark:text-zinc-300 font-mono">
+                  {s}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="p-6 rounded-2xl glass glow-border space-y-3">
+            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+              <Terminal className="w-5 h-5" />
+            </div>
+            <h3 className="font-heading font-bold text-base text-zinc-900 dark:text-white">
+              Backend & Java / APIs
+            </h3>
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              {(profile.skills?.backend || profile.technicalSkills?.backend || []).map((s, i) => (
+                <span key={i} className="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-white/5 text-xs text-zinc-700 dark:text-zinc-300 font-mono">
+                  {s}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="p-6 rounded-2xl glass glow-border space-y-3">
+            <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
+              <Cloud className="w-5 h-5" />
+            </div>
+            <h3 className="font-heading font-bold text-base text-zinc-900 dark:text-white">
+              Cloud & CI/CD Tooling
+            </h3>
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              {(profile.skills?.cloud || profile.technicalSkills?.toolsWorkflow || []).map((s, i) => (
+                <span key={i} className="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-white/5 text-xs text-zinc-700 dark:text-zinc-300 font-mono">
+                  {s}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="p-6 rounded-2xl glass glow-border space-y-3">
+            <div className="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center">
+              <Palette className="w-5 h-5" />
+            </div>
+            <h3 className="font-heading font-bold text-base text-zinc-900 dark:text-white">
+              UI/UX & Design Systems
+            </h3>
+            <div className="flex flex-wrap gap-1.5 pt-1">
+              {(profile.skills?.design || profile.technicalSkills?.languages || []).map((s, i) => (
+                <span key={i} className="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-white/5 text-xs text-zinc-700 dark:text-zinc-300 font-mono">
+                  {s}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Projects Spotlight */}
       <section className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
@@ -285,85 +364,6 @@ export default function Home({ onToast }) {
               )}
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Core Technical Matrix */}
-      <section className="space-y-6">
-        <div>
-          <div className="text-xs font-bold uppercase tracking-wider text-indigo-500 dark:text-indigo-400 flex items-center gap-1.5">
-            <Code2 className="w-3.5 h-3.5" />
-            <span>Technical Expertise</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold font-heading text-zinc-900 dark:text-white mt-1">
-            Skills & Engineering Tooling
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="p-6 rounded-2xl glass glow-border space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center">
-              <Globe className="w-5 h-5" />
-            </div>
-            <h3 className="font-heading font-bold text-base text-zinc-900 dark:text-white">
-              Frontend & UI
-            </h3>
-            <div className="flex flex-wrap gap-1.5 pt-1">
-              {(profile.skills?.frontend || profile.technicalSkills?.frontend || []).map((s, i) => (
-                <span key={i} className="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-white/5 text-xs text-zinc-700 dark:text-zinc-300 font-mono">
-                  {s}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="p-6 rounded-2xl glass glow-border space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
-              <Terminal className="w-5 h-5" />
-            </div>
-            <h3 className="font-heading font-bold text-base text-zinc-900 dark:text-white">
-              Backend & Java / APIs
-            </h3>
-            <div className="flex flex-wrap gap-1.5 pt-1">
-              {(profile.skills?.backend || profile.technicalSkills?.backend || []).map((s, i) => (
-                <span key={i} className="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-white/5 text-xs text-zinc-700 dark:text-zinc-300 font-mono">
-                  {s}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="p-6 rounded-2xl glass glow-border space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
-              <Cloud className="w-5 h-5" />
-            </div>
-            <h3 className="font-heading font-bold text-base text-zinc-900 dark:text-white">
-              Cloud & CI/CD Tooling
-            </h3>
-            <div className="flex flex-wrap gap-1.5 pt-1">
-              {(profile.skills?.cloud || profile.technicalSkills?.toolsWorkflow || []).map((s, i) => (
-                <span key={i} className="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-white/5 text-xs text-zinc-700 dark:text-zinc-300 font-mono">
-                  {s}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="p-6 rounded-2xl glass glow-border space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center">
-              <Palette className="w-5 h-5" />
-            </div>
-            <h3 className="font-heading font-bold text-base text-zinc-900 dark:text-white">
-              UI/UX & Design Systems
-            </h3>
-            <div className="flex flex-wrap gap-1.5 pt-1">
-              {(profile.skills?.design || profile.technicalSkills?.languages || []).map((s, i) => (
-                <span key={i} className="px-2.5 py-1 rounded-lg bg-zinc-100 dark:bg-white/5 text-xs text-zinc-700 dark:text-zinc-300 font-mono">
-                  {s}
-                </span>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
